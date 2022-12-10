@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="75"
-  DTS:VersionGUID="{67B77902-A7D4-478F-9D12-1A0DF4255D96}">
+  DTS:VersionBuild="86"
+  DTS:VersionGUID="{8C6B9253-577E-42D2-8A09-E63DAD31F045}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -4057,6 +4057,268 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
               </outputs>
             </component>
             <component
+              refId="Package\Populating Song Table\Label(SpotifyDB)"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Label(SpotifyDB)"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[MusicLabel]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Populating Song Table\Label(SpotifyDB).Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.SpotifyDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.SpotifyDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[LabelID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[LabelID]"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[LabelID]"
+                      name="LabelID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[LabelName]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[LabelName]"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[LabelName]"
+                      name="LabelName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[MainGenre]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[MainGenre]"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[MainGenre]"
+                      name="MainGenre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[NumberOfSongs]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[NumberOfSongs]"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[NumberOfSongs]"
+                      name="NumberOfSongs"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[CreationDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[CreationDate]"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[CreationDate]"
+                      name="CreationDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[ContractStart]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[ContractStart]"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[ContractStart]"
+                      name="ContractStart"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[ContractEnd]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[ContractEnd]"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[ContractEnd]"
+                      name="ContractEnd"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[NumberOfArtists]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[NumberOfArtists]"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[NumberOfArtists]"
+                      name="NumberOfArtists"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[CostOfContract]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[CostOfContract]"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[CostOfContract]"
+                      name="CostOfContract"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[LabelID]"
+                      dataType="i4"
+                      name="LabelID" />
+                    <externalMetadataColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[LabelName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      name="LabelName" />
+                    <externalMetadataColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[MainGenre]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      name="MainGenre" />
+                    <externalMetadataColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[NumberOfSongs]"
+                      dataType="i4"
+                      name="NumberOfSongs" />
+                    <externalMetadataColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[CreationDate]"
+                      dataType="dbTimeStamp"
+                      name="CreationDate" />
+                    <externalMetadataColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[ContractStart]"
+                      dataType="dbTimeStamp"
+                      name="ContractStart" />
+                    <externalMetadataColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[ContractEnd]"
+                      dataType="dbTimeStamp"
+                      name="ContractEnd" />
+                    <externalMetadataColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[NumberOfArtists]"
+                      dataType="i4"
+                      name="NumberOfArtists" />
+                    <externalMetadataColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[CostOfContract]"
+                      dataType="r8"
+                      name="CostOfContract" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[LabelID]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[LabelID]"
+                      name="LabelID" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[LabelName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[LabelName]"
+                      name="LabelName" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[MainGenre]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[MainGenre]"
+                      name="MainGenre" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[NumberOfSongs]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[NumberOfSongs]"
+                      name="NumberOfSongs" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[CreationDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[CreationDate]"
+                      name="CreationDate" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[ContractStart]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[ContractStart]"
+                      name="ContractStart" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[ContractEnd]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[ContractEnd]"
+                      name="ContractEnd" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[NumberOfArtists]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[NumberOfArtists]"
+                      name="NumberOfArtists" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[CostOfContract]"
+                      dataType="r8"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[CostOfContract]"
+                      name="CostOfContract" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Populating Song Table\Lookup"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
@@ -4077,7 +4339,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[Song]) [refTable]
-where [refTable].[Song_ID] = ?</property>
+where [refTable].[SID] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -4113,7 +4375,7 @@ where [refTable].[Song_ID] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[SongID]};</property>
+                  name="ParameterMap">#{Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[SID]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -4137,20 +4399,43 @@ where [refTable].[Song_ID] = ?</property>
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Populating Song Table\Lookup.Inputs[Lookup Input].Columns[SongID]"
-                      cachedDataType="i4"
-                      cachedName="SongID"
-                      cachedSortKeyPosition="1"
-                      lineageId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[SongID]">
+                      refId="Package\Populating Song Table\Lookup.Inputs[Lookup Input].Columns[SID]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="11"
+                      cachedName="SID"
+                      lineageId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[SID]">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">Song_ID</property>
+                          name="JoinToReferenceColumn">SID</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
                           name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Lookup.Inputs[Lookup Input].Columns[Song_Name]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="SongName"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[SongName]"
+                      name="Song_Name"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn" />
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Song_Name</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -4166,19 +4451,17 @@ where [refTable].[Song_ID] = ?</property>
                   synchronousInputId="Package\Populating Song Table\Lookup.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Populating Song Table\Lookup.Outputs[Lookup Match Output].Columns[Rank_Category_LookUP]"
-                      codePage="1250"
-                      dataType="str"
+                      refId="Package\Populating Song Table\Lookup.Outputs[Lookup Match Output].Columns[Current_Flag]"
+                      dataType="bool"
                       errorOrTruncationOperation="Copy Column"
-                      length="100"
-                      lineageId="Package\Populating Song Table\Lookup.Outputs[Lookup Match Output].Columns[Rank_Category_LookUP]"
-                      name="Rank_Category_LookUP"
+                      lineageId="Package\Populating Song Table\Lookup.Outputs[Lookup Match Output].Columns[Current_Flag]"
+                      name="Current_Flag"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">Rank_Category</property>
+                          name="CopyFromReferenceColumn">Current_Flag</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -4209,6 +4492,184 @@ where [refTable].[Song_ID] = ?</property>
                       refId="Package\Populating Song Table\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Populating Song Table\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Populating Song Table\Lookup 1"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup 1"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[MusicLabel]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[MusicLabel]) [refTable]
+where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="LabelID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Label_Name" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Main_Genre" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Number_Of_Songs" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="ID_Creation_Date" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ID_Contract_Start" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ID_Contract_End" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Number_Of_Artists" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Cost_Of_Contract" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[LabelName]};#{Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[MainGenre]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Populating Song Table\Lookup 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.SpotifyDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.SpotifyDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Populating Song Table\Lookup 1.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Lookup 1.Inputs[Lookup Input].Columns[LabelName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="LabelName"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[LabelName]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Label_Name</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Lookup 1.Inputs[Lookup Input].Columns[MainGenre]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="MainGenre"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[MainGenre]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Main_Genre</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Populating Song Table\Lookup 1.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Populating Song Table\Lookup 1.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Lookup 1.Outputs[Lookup Match Output].Columns[LabelID DW]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Populating Song Table\Lookup 1.Outputs[Lookup Match Output].Columns[LabelID DW]"
+                      name="LabelID DW"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">LabelID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Populating Song Table\Lookup 1.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Populating Song Table\Lookup 1.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Populating Song Table\Lookup 1.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Populating Song Table\Lookup 1.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -4261,13 +4722,6 @@ where [refTable].[Song_ID] = ?</property>
                       cachedLength="11"
                       cachedName="SID"
                       lineageId="Package\Populating Song Table\Removing duplicates and sort by SongID.Outputs[Sort Output].Columns[SID]" />
-                    <inputColumn
-                      refId="Package\Populating Song Table\Merge Join.Inputs[Merge Join Left Input].Columns[rankCategory]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="rankCategory"
-                      lineageId="Package\Populating Song Table\Removing duplicates and sort by SongID.Outputs[Sort Output].Columns[rankCategory]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -4281,57 +4735,52 @@ where [refTable].[Song_ID] = ?</property>
                       cachedDataType="i4"
                       cachedName="SongID"
                       cachedSortKeyPosition="1"
-                      lineageId="Package\Populating Song Table\Sort by SongID.Outputs[Sort Output].Columns[SongID]" />
-                    <inputColumn
-                      refId="Package\Populating Song Table\Merge Join.Inputs[Merge Join Right Input].Columns[LabelID]"
-                      cachedDataType="i4"
-                      cachedName="LabelID"
-                      lineageId="Package\Populating Song Table\Sort by SongID.Outputs[Sort Output].Columns[LabelID]" />
+                      lineageId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[SongID]" />
                     <inputColumn
                       refId="Package\Populating Song Table\Merge Join.Inputs[Merge Join Right Input].Columns[SongName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="SongName"
-                      lineageId="Package\Populating Song Table\Sort by SongID.Outputs[Sort Output].Columns[SongName]" />
-                    <inputColumn
-                      refId="Package\Populating Song Table\Merge Join.Inputs[Merge Join Right Input].Columns[PublicationDate]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="PublicationDate"
-                      lineageId="Package\Populating Song Table\Sort by SongID.Outputs[Sort Output].Columns[PublicationDate]" />
+                      lineageId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[SongName]" />
                     <inputColumn
                       refId="Package\Populating Song Table\Merge Join.Inputs[Merge Join Right Input].Columns[Artist]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Artist"
-                      lineageId="Package\Populating Song Table\Sort by SongID.Outputs[Sort Output].Columns[Artist]" />
+                      lineageId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[Artist]" />
                     <inputColumn
                       refId="Package\Populating Song Table\Merge Join.Inputs[Merge Join Right Input].Columns[Writer]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Writer"
-                      lineageId="Package\Populating Song Table\Sort by SongID.Outputs[Sort Output].Columns[Writer]" />
+                      lineageId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[Writer]" />
                     <inputColumn
                       refId="Package\Populating Song Table\Merge Join.Inputs[Merge Join Right Input].Columns[Producer]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Producer"
-                      lineageId="Package\Populating Song Table\Sort by SongID.Outputs[Sort Output].Columns[Producer]" />
+                      lineageId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[Producer]" />
                     <inputColumn
                       refId="Package\Populating Song Table\Merge Join.Inputs[Merge Join Right Input].Columns[Genre]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Genre"
-                      lineageId="Package\Populating Song Table\Sort by SongID.Outputs[Sort Output].Columns[Genre]" />
+                      lineageId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[Genre]" />
                     <inputColumn
                       refId="Package\Populating Song Table\Merge Join.Inputs[Merge Join Right Input].Columns[streams]"
                       cachedDataType="i4"
                       cachedName="streams"
-                      lineageId="Package\Populating Song Table\Sort by SongID.Outputs[Sort Output].Columns[streams]" />
+                      lineageId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[streams]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\Merge Join.Inputs[Merge Join Right Input].Columns[LabelID DW]"
+                      cachedDataType="i4"
+                      cachedName="LabelID DW"
+                      lineageId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[LabelID DW]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -4339,36 +4788,8 @@ where [refTable].[Song_ID] = ?</property>
               <outputs>
                 <output
                   refId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output]"
-                  isSorted="true"
                   name="Merge Join Output">
                   <outputColumns>
-                    <outputColumn
-                      refId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[SongID]"
-                      dataType="i4"
-                      lineageId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[SongID]"
-                      name="SongID"
-                      sortKeyPosition="1">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Populating Song Table\Merge Join.Inputs[Merge Join Right Input].Columns[SongID]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[LabelID]"
-                      dataType="i4"
-                      lineageId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[LabelID]"
-                      name="LabelID">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Populating Song Table\Merge Join.Inputs[Merge Join Right Input].Columns[LabelID]}</property>
-                      </properties>
-                    </outputColumn>
                     <outputColumn
                       refId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[SongName]"
                       codePage="1250"
@@ -4382,19 +4803,6 @@ where [refTable].[Song_ID] = ?</property>
                           dataType="System.Int32"
                           description="The input column associated with this output column"
                           name="InputColumnID">#{Package\Populating Song Table\Merge Join.Inputs[Merge Join Right Input].Columns[SongName]}</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[PublicationDate]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[PublicationDate]"
-                      name="PublicationDate">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Populating Song Table\Merge Join.Inputs[Merge Join Right Input].Columns[PublicationDate]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -4471,6 +4879,19 @@ where [refTable].[Song_ID] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
+                      refId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[LabelID DW]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[LabelID DW]"
+                      name="LabelID DW">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating Song Table\Merge Join.Inputs[Merge Join Right Input].Columns[LabelID DW]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
                       refId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[SID]"
                       codePage="1250"
                       dataType="str"
@@ -4485,19 +4906,401 @@ where [refTable].[Song_ID] = ?</property>
                           name="InputColumnID">#{Package\Populating Song Table\Merge Join.Inputs[Merge Join Left Input].Columns[SID]}</property>
                       </properties>
                     </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Populating Song Table\Merge Join 1"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Left Input].Columns[LabelID]"
+                      cachedDataType="i4"
+                      cachedName="LabelID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[LabelID]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Left Input].Columns[LabelName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="LabelName"
+                      lineageId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[LabelName]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Left Input].Columns[MainGenre]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="MainGenre"
+                      lineageId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[MainGenre]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Left Input].Columns[NumberOfSongs]"
+                      cachedDataType="i4"
+                      cachedName="NumberOfSongs"
+                      lineageId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[NumberOfSongs]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Left Input].Columns[CreationDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreationDate"
+                      lineageId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[CreationDate]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Left Input].Columns[ContractStart]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ContractStart"
+                      lineageId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[ContractStart]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Left Input].Columns[ContractEnd]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ContractEnd"
+                      lineageId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[ContractEnd]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Left Input].Columns[NumberOfArtists]"
+                      cachedDataType="i4"
+                      cachedName="NumberOfArtists"
+                      lineageId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[NumberOfArtists]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Left Input].Columns[CostOfContract]"
+                      cachedDataType="r8"
+                      cachedName="CostOfContract"
+                      lineageId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[CostOfContract]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Right Input].Columns[LabelID]"
+                      cachedDataType="i4"
+                      cachedName="LabelID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[LabelID]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Right Input].Columns[SongID]"
+                      cachedDataType="i4"
+                      cachedName="SongID"
+                      lineageId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[SongID]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Right Input].Columns[SongName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="SongName"
+                      lineageId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[SongName]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Right Input].Columns[PublicationDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="PublicationDate"
+                      lineageId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[PublicationDate]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Right Input].Columns[Artist]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Artist"
+                      lineageId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[Artist]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Right Input].Columns[Writer]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Writer"
+                      lineageId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[Writer]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Right Input].Columns[Producer]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Producer"
+                      lineageId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[Producer]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Right Input].Columns[Genre]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Genre"
+                      lineageId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[Genre]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Right Input].Columns[streams]"
+                      cachedDataType="i4"
+                      cachedName="streams"
+                      lineageId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[streams]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
                     <outputColumn
-                      refId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[rankCategory]"
-                      codePage="1250"
-                      dataType="str"
-                      length="50"
-                      lineageId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[rankCategory]"
-                      name="rankCategory">
+                      refId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[LabelID]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[LabelID]"
+                      name="LabelID"
+                      sortKeyPosition="1">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Populating Song Table\Merge Join.Inputs[Merge Join Left Input].Columns[rankCategory]}</property>
+                          name="InputColumnID">#{Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Left Input].Columns[LabelID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[LabelName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[LabelName]"
+                      name="LabelName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Left Input].Columns[LabelName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[MainGenre]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[MainGenre]"
+                      name="MainGenre">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Left Input].Columns[MainGenre]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[NumberOfSongs]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[NumberOfSongs]"
+                      name="NumberOfSongs">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Left Input].Columns[NumberOfSongs]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[CreationDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[CreationDate]"
+                      name="CreationDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Left Input].Columns[CreationDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[ContractStart]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[ContractStart]"
+                      name="ContractStart">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Left Input].Columns[ContractStart]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[ContractEnd]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[ContractEnd]"
+                      name="ContractEnd">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Left Input].Columns[ContractEnd]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[NumberOfArtists]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[NumberOfArtists]"
+                      name="NumberOfArtists">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Left Input].Columns[NumberOfArtists]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[CostOfContract]"
+                      dataType="r8"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[CostOfContract]"
+                      name="CostOfContract">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Left Input].Columns[CostOfContract]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[SongID]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[SongID]"
+                      name="SongID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Right Input].Columns[SongID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[SongName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[SongName]"
+                      name="SongName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Right Input].Columns[SongName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[PublicationDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[PublicationDate]"
+                      name="PublicationDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Right Input].Columns[PublicationDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[Artist]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[Artist]"
+                      name="Artist">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Right Input].Columns[Artist]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[Writer]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[Writer]"
+                      name="Writer">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Right Input].Columns[Writer]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[Producer]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[Producer]"
+                      name="Producer">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Right Input].Columns[Producer]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[Genre]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[Genre]"
+                      name="Genre">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Right Input].Columns[Genre]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[streams]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[streams]"
+                      name="streams">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Right Input].Columns[streams]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -4631,6 +5434,12 @@ where [refTable].[Song_ID] = ?</property>
                       cachedName="SongName"
                       externalMetadataColumnId="Package\Populating Song Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Song_Name]"
                       lineageId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[SongName]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LabelID DW]"
+                      cachedDataType="i4"
+                      cachedName="LabelID DW"
+                      externalMetadataColumnId="Package\Populating Song Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LabelID]"
+                      lineageId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[LabelID DW]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -5145,6 +5954,290 @@ where [refTable].[Song_ID] = ?</property>
               </outputs>
             </component>
             <component
+              refId="Package\Populating Song Table\Song(SpotifyDB) 1"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Song(SpotifyDB) 1"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Song]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Populating Song Table\Song(SpotifyDB) 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.SpotifyDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.SpotifyDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[LabelID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].ExternalColumns[LabelID]"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[LabelID]"
+                      name="LabelID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[SongID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].ExternalColumns[SongID]"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[SongID]"
+                      name="SongID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[SongName]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].ExternalColumns[SongName]"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[SongName]"
+                      name="SongName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[PublicationDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].ExternalColumns[PublicationDate]"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[PublicationDate]"
+                      name="PublicationDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[Artist]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].ExternalColumns[Artist]"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[Artist]"
+                      name="Artist"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[Writer]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].ExternalColumns[Writer]"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[Writer]"
+                      name="Writer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[Producer]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].ExternalColumns[Producer]"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[Producer]"
+                      name="Producer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[Genre]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].ExternalColumns[Genre]"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[Genre]"
+                      name="Genre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[streams]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].ExternalColumns[streams]"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[streams]"
+                      name="streams"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].ExternalColumns[LabelID]"
+                      dataType="i4"
+                      name="LabelID" />
+                    <externalMetadataColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].ExternalColumns[SongID]"
+                      dataType="i4"
+                      name="SongID" />
+                    <externalMetadataColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].ExternalColumns[SongName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      name="SongName" />
+                    <externalMetadataColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].ExternalColumns[PublicationDate]"
+                      dataType="dbTimeStamp"
+                      name="PublicationDate" />
+                    <externalMetadataColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].ExternalColumns[Artist]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      name="Artist" />
+                    <externalMetadataColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].ExternalColumns[Writer]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      name="Writer" />
+                    <externalMetadataColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].ExternalColumns[Producer]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      name="Producer" />
+                    <externalMetadataColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].ExternalColumns[Genre]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      name="Genre" />
+                    <externalMetadataColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].ExternalColumns[DurationOfSong]"
+                      dataType="r8"
+                      name="DurationOfSong" />
+                    <externalMetadataColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].ExternalColumns[streams]"
+                      dataType="i4"
+                      name="streams" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output].Columns[SongID]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output].Columns[SongID]"
+                      name="SongID" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output].Columns[LabelID]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output].Columns[LabelID]"
+                      name="LabelID" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output].Columns[SongName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output].Columns[SongName]"
+                      name="SongName" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output].Columns[PublicationDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output].Columns[PublicationDate]"
+                      name="PublicationDate" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output].Columns[Artist]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output].Columns[Artist]"
+                      name="Artist" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output].Columns[Writer]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output].Columns[Writer]"
+                      name="Writer" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output].Columns[Producer]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output].Columns[Producer]"
+                      name="Producer" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output].Columns[Genre]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output].Columns[Genre]"
+                      name="Genre" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output].Columns[streams]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output].Columns[streams]"
+                      name="streams" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Populating Song Table\Songs CSV"
               componentClassID="Microsoft.FlatFileSource"
               contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -5288,6 +6381,634 @@ where [refTable].[Song_ID] = ?</property>
                       lineageId="Package\Populating Song Table\Songs CSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Populating Song Table\Sort by LabelID"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort by LabelID"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Populating Song Table\Sort by LabelID.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID.Inputs[Sort Input].Columns[SongID]"
+                      cachedDataType="i4"
+                      cachedName="SongID"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[SongID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID.Inputs[Sort Input].Columns[LabelID]"
+                      cachedDataType="i4"
+                      cachedName="LabelID"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[LabelID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID.Inputs[Sort Input].Columns[SongName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="SongName"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[SongName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID.Inputs[Sort Input].Columns[PublicationDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="PublicationDate"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[PublicationDate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID.Inputs[Sort Input].Columns[Artist]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Artist"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[Artist]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID.Inputs[Sort Input].Columns[Writer]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Writer"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[Writer]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID.Inputs[Sort Input].Columns[Producer]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Producer"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[Producer]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID.Inputs[Sort Input].Columns[Genre]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Genre"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[Genre]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID.Inputs[Sort Input].Columns[streams]"
+                      cachedDataType="i4"
+                      cachedName="streams"
+                      lineageId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[streams]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[SongID]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[SongID]"
+                      name="SongID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[SongID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[LabelID]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[LabelID]"
+                      name="LabelID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[LabelID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[SongName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[SongName]"
+                      name="SongName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[SongName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[PublicationDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[PublicationDate]"
+                      name="PublicationDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[PublicationDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[Artist]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[Artist]"
+                      name="Artist">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[Artist]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[Writer]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[Writer]"
+                      name="Writer">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[Writer]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[Producer]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[Producer]"
+                      name="Producer">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[Producer]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[Genre]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[Genre]"
+                      name="Genre">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[Genre]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[streams]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output].Columns[streams]"
+                      name="streams">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output].Columns[streams]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Populating Song Table\Sort by LabelID 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort by LabelID 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Populating Song Table\Sort by LabelID 1.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID 1.Inputs[Sort Input].Columns[LabelID]"
+                      cachedDataType="i4"
+                      cachedName="LabelID"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[LabelID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID 1.Inputs[Sort Input].Columns[LabelName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="LabelName"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[LabelName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID 1.Inputs[Sort Input].Columns[MainGenre]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="MainGenre"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[MainGenre]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID 1.Inputs[Sort Input].Columns[NumberOfSongs]"
+                      cachedDataType="i4"
+                      cachedName="NumberOfSongs"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[NumberOfSongs]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID 1.Inputs[Sort Input].Columns[CreationDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreationDate"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[CreationDate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID 1.Inputs[Sort Input].Columns[ContractStart]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ContractStart"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[ContractStart]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID 1.Inputs[Sort Input].Columns[ContractEnd]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ContractEnd"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[ContractEnd]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID 1.Inputs[Sort Input].Columns[NumberOfArtists]"
+                      cachedDataType="i4"
+                      cachedName="NumberOfArtists"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[NumberOfArtists]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID 1.Inputs[Sort Input].Columns[CostOfContract]"
+                      cachedDataType="r8"
+                      cachedName="CostOfContract"
+                      lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[CostOfContract]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[LabelID]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[LabelID]"
+                      name="LabelID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[LabelID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[LabelName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[LabelName]"
+                      name="LabelName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[LabelName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[MainGenre]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[MainGenre]"
+                      name="MainGenre">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[MainGenre]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[NumberOfSongs]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[NumberOfSongs]"
+                      name="NumberOfSongs">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[NumberOfSongs]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[CreationDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[CreationDate]"
+                      name="CreationDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[CreationDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[ContractStart]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[ContractStart]"
+                      name="ContractStart">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[ContractStart]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[ContractEnd]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[ContractEnd]"
+                      name="ContractEnd">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[ContractEnd]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[NumberOfArtists]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[NumberOfArtists]"
+                      name="NumberOfArtists">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[NumberOfArtists]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[CostOfContract]"
+                      dataType="r8"
+                      lineageId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output].Columns[CostOfContract]"
+                      name="CostOfContract">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output].Columns[CostOfContract]}</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -5613,6 +7334,326 @@ where [refTable].[Song_ID] = ?</property>
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\Populating Song Table\Sort by SongID 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort by SongID 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Populating Song Table\Sort by SongID 1.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by SongID 1.Inputs[Sort Input].Columns[SongID]"
+                      cachedDataType="i4"
+                      cachedName="SongID"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[SongID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by SongID 1.Inputs[Sort Input].Columns[SongName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="SongName"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[SongName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by SongID 1.Inputs[Sort Input].Columns[PublicationDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="PublicationDate"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[PublicationDate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by SongID 1.Inputs[Sort Input].Columns[Artist]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Artist"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[Artist]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by SongID 1.Inputs[Sort Input].Columns[Writer]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Writer"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[Writer]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by SongID 1.Inputs[Sort Input].Columns[Producer]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Producer"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[Producer]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by SongID 1.Inputs[Sort Input].Columns[Genre]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Genre"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[Genre]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by SongID 1.Inputs[Sort Input].Columns[streams]"
+                      cachedDataType="i4"
+                      cachedName="streams"
+                      lineageId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[streams]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Sort by SongID 1.Inputs[Sort Input].Columns[LabelID DW]"
+                      cachedDataType="i4"
+                      cachedName="LabelID DW"
+                      lineageId="Package\Populating Song Table\Lookup 1.Outputs[Lookup Match Output].Columns[LabelID DW]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[SongID]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[SongID]"
+                      name="SongID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[SongID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[SongName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[SongName]"
+                      name="SongName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[SongName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[PublicationDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[PublicationDate]"
+                      name="PublicationDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[PublicationDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[Artist]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[Artist]"
+                      name="Artist">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[Artist]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[Writer]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[Writer]"
+                      name="Writer">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[Writer]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[Producer]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[Producer]"
+                      name="Producer">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[Producer]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[Genre]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[Genre]"
+                      name="Genre">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[Genre]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[streams]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[streams]"
+                      name="streams">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output].Columns[streams]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[LabelID DW]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output].Columns[LabelID DW]"
+                      name="LabelID DW">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating Song Table\Lookup 1.Outputs[Lookup Match Output].Columns[LabelID DW]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
             <path
@@ -5631,12 +7672,22 @@ where [refTable].[Song_ID] = ?</property>
               name="Flat File Source Output"
               startId="Package\Populating Song Table\Songs CSV.Outputs[Flat File Source Output]" />
             <path
+              refId="Package\Populating Song Table.Paths[Lookup Match Output]"
+              endId="Package\Populating Song Table\Sort by SongID 1.Inputs[Sort Input]"
+              name="Lookup Match Output"
+              startId="Package\Populating Song Table\Lookup 1.Outputs[Lookup Match Output]" />
+            <path
               refId="Package\Populating Song Table.Paths[Lookup No Match Output]"
               endId="Package\Populating Song Table\Adding IsCurrent Flag.Inputs[Derived Column Input]"
               name="Lookup No Match Output"
               startId="Package\Populating Song Table\Lookup.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\Populating Song Table.Paths[Merge Join Output]"
+              endId="Package\Populating Song Table\Lookup 1.Inputs[Lookup Input]"
+              name="Merge Join Output"
+              startId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Populating Song Table.Paths[Merge Join Output1]"
               endId="Package\Populating Song Table\Lookup.Inputs[Lookup Input]"
               name="Merge Join Output"
               startId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output]" />
@@ -5646,15 +7697,35 @@ where [refTable].[Song_ID] = ?</property>
               name="OLE DB Source Output"
               startId="Package\Populating Song Table\Song(SpotifyDB).Outputs[OLE DB Source Output]" />
             <path
+              refId="Package\Populating Song Table.Paths[OLE DB Source Output1]"
+              endId="Package\Populating Song Table\Sort by LabelID.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Populating Song Table\Song(SpotifyDB) 1.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Populating Song Table.Paths[OLE DB Source Output2]"
+              endId="Package\Populating Song Table\Sort by LabelID 1.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Output]" />
+            <path
               refId="Package\Populating Song Table.Paths[Sort Output]"
+              endId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Populating Song Table\Sort by LabelID 1.Outputs[Sort Output]" />
+            <path
+              refId="Package\Populating Song Table.Paths[Sort Output1]"
+              endId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output]" />
+            <path
+              refId="Package\Populating Song Table.Paths[Sort Output2]"
               endId="Package\Populating Song Table\Merge Join.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\Populating Song Table\Removing duplicates and sort by SongID.Outputs[Sort Output]" />
             <path
-              refId="Package\Populating Song Table.Paths[Sort Output1]"
+              refId="Package\Populating Song Table.Paths[Sort Output3]"
               endId="Package\Populating Song Table\Merge Join.Inputs[Merge Join Right Input]"
               name="Sort Output"
-              startId="Package\Populating Song Table\Sort by SongID.Outputs[Sort Output]" />
+              startId="Package\Populating Song Table\Sort by SongID 1.Outputs[Sort Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -5871,9 +7942,7 @@ where [refTable].[Song_ID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5895,9 +7964,7 @@ where [refTable].[Song_ID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5919,9 +7986,7 @@ where [refTable].[Song_ID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5943,9 +8008,7 @@ where [refTable].[Song_ID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6077,30 +8140,30 @@ where [refTable].[Song_ID] = ?</property>
         <NodeLayout
           Size="159,50"
           Id="Package\Populating Song Table\Removing duplicates and sort by SongID"
-          TopLeft="168.5,209.5" />
+          TopLeft="168.5,423.5" />
         <NodeLayout
           Size="156,42"
           Id="Package\Populating Song Table\Conversion from unicode"
-          TopLeft="157,107.5" />
+          TopLeft="157,321.5" />
         <NodeLayout
           Size="151,42"
           Id="Package\Populating Song Table\Songs CSV"
-          TopLeft="159.5,5.5" />
+          TopLeft="159.5,219.5" />
         <NodeLayout
           Size="128,42"
           Id="Package\Populating Song Table\Sort by SongID"
-          TopLeft="480,212.5" />
+          TopLeft="388,427.5" />
         <NodeLayout
           Size="154,42"
           Id="Package\Populating Song Table\Adding IsCurrent Flag"
-          TopLeft="133,523.5" />
+          TopLeft="133,841.5" />
         <NodeLayout
           Size="157,42"
           Id="Package\Populating Song Table\Song(SpotifyDB)"
-          TopLeft="474.5,113.5" />
+          TopLeft="373.5,321.5" />
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[Flat File Source Output]"
-          TopLeft="235,47.5">
+          TopLeft="235,261.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6122,7 +8185,7 @@ where [refTable].[Song_ID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[Data Conversion Output]"
-          TopLeft="235,149.5">
+          TopLeft="235,363.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6156,164 +8219,18 @@ where [refTable].[Song_ID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[OLE DB Source Output]"
-          TopLeft="553,155.5">
+          TopLeft="452,363.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-9,57"
+              EndConnector="0,64"
               Start="0,0"
-              End="-9,49.5">
+              End="0,56.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24.5"
-                    Point2="0,28.5"
-                    Point3="-4,28.5" />
-                  <mssgle:LineSegment
-                    End="-5,28.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-5,28.5"
-                    Point2="-9,28.5"
-                    Point3="-9,32.5" />
-                  <mssgle:LineSegment
-                    End="-9,49.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="113,42"
-          Id="Package\Populating Song Table\Lookup"
-          TopLeft="377,401" />
-        <EdgeLayout
-          Id="Package\Populating Song Table.Paths[Lookup No Match Output]"
-          TopLeft="433.5,443">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-223.5,80.5"
-              Start="0,0"
-              End="-223.5,73">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,36.25"
-                    Point2="0,40.25"
-                    Point3="-4,40.25" />
-                  <mssgle:LineSegment
-                    End="-219.5,40.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-219.5,40.25"
-                    Point2="-223.5,40.25"
-                    Point3="-223.5,44.25" />
-                  <mssgle:LineSegment
-                    End="-223.5,73" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-167.55638671875,45.25,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="130,42"
-          Id="Package\Populating Song Table\Merge Join"
-          TopLeft="370,321" />
-        <EdgeLayout
-          Id="Package\Populating Song Table.Paths[Sort Output]"
-          TopLeft="248,259.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="187,61.5"
-              Start="0,0"
-              End="187,54">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.75" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.75"
-                    Point2="0,30.75"
-                    Point3="4,30.75" />
-                  <mssgle:LineSegment
-                    End="183,30.75" />
-                  <mssgle:CubicBezierSegment
-                    Point1="183,30.75"
-                    Point2="187,30.75"
-                    Point3="187,34.75" />
-                  <mssgle:LineSegment
-                    End="187,54" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Populating Song Table.Paths[Sort Output1]"
-          TopLeft="544,254.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-88.6666666666667,66.5"
-              Start="0,0"
-              End="-88.6666666666667,59">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.4148936170213" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,35.4148936170213"
-                    Point2="0,39.4148936170213"
-                    Point3="-4,39.4148936170213" />
-                  <mssgle:LineSegment
-                    End="-84.6666666666667,39.4148936170213" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-84.6666666666667,39.4148936170213"
-                    Point2="-88.6666666666667,39.4148936170213"
-                    Point3="-88.6666666666667,43.4148936170213" />
-                  <mssgle:LineSegment
-                    End="-88.6666666666667,59" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Populating Song Table.Paths[Merge Join Output]"
-          TopLeft="434.25,363">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38"
-              Start="0,0"
-              End="0,30.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.5" />
+                    End="0,56.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6325,39 +8242,395 @@ where [refTable].[Song_ID] = ?</property>
         <NodeLayout
           Size="171,42"
           Id="Package\Populating Song Table\OLE DB Destination"
-          TopLeft="136,603" />
+          TopLeft="5.50000000000006,943.5" />
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[Derived Column Output]"
-          TopLeft="210,565.5">
+          TopLeft="210,883.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="11.4999999999999,37.5"
+              EndConnector="-119,60"
               Start="0,0"
-              End="11.4999999999999,30">
+              End="-119,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,14.75" />
+                    End="0,26" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,14.75"
-                    Point2="0,18.75"
-                    Point3="4,18.75" />
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
                   <mssgle:LineSegment
-                    End="7.49999999999989,18.75" />
+                    End="-115,30" />
                   <mssgle:CubicBezierSegment
-                    Point1="7.49999999999989,18.75"
-                    Point2="11.4999999999999,18.75"
-                    Point3="11.4999999999999,22.75" />
+                    Point1="-115,30"
+                    Point2="-119,30"
+                    Point3="-119,34" />
                   <mssgle:LineSegment
-                    End="11.4999999999999,30" />
+                    End="-119,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Populating Song Table\Label(SpotifyDB)"
+          TopLeft="547,0" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Populating Song Table\Song(SpotifyDB) 1"
+          TopLeft="782,1" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\Populating Song Table\Sort by LabelID"
+          TopLeft="790.5,108.5" />
+        <EdgeLayout
+          Id="Package\Populating Song Table.Paths[OLE DB Source Output1]"
+          TopLeft="863.5,43">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65.5"
+              Start="0,0"
+              End="0,58">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Populating Song Table\Sort by LabelID 1"
+          TopLeft="570,112" />
+        <EdgeLayout
+          Id="Package\Populating Song Table.Paths[OLE DB Source Output2]"
+          TopLeft="626,42">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="24.5,70"
+              Start="0,0"
+              End="24.5,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31"
+                    Point2="0,35"
+                    Point3="4,35" />
+                  <mssgle:LineSegment
+                    End="20.5,35" />
+                  <mssgle:CubicBezierSegment
+                    Point1="20.5,35"
+                    Point2="24.5,35"
+                    Point3="24.5,39" />
+                  <mssgle:LineSegment
+                    End="24.5,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Populating Song Table\Merge Join 1"
+          TopLeft="684,227" />
+        <EdgeLayout
+          Id="Package\Populating Song Table.Paths[Sort Output]"
+          TopLeft="650.5,154">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="103,73"
+              Start="0,0"
+              End="103,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.5"
+                    Point2="0,36.5"
+                    Point3="4,36.5" />
+                  <mssgle:LineSegment
+                    End="99,36.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="99,36.5"
+                    Point2="103,36.5"
+                    Point3="103,40.5" />
+                  <mssgle:LineSegment
+                    End="103,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Populating Song Table.Paths[Sort Output1]"
+          TopLeft="866.5,150.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-91.1666666666666,76.5"
+              Start="0,0"
+              End="-91.1666666666666,69">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.3776671408251" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.3776671408251"
+                    Point2="0,45.3776671408251"
+                    Point3="-4,45.3776671408251" />
+                  <mssgle:LineSegment
+                    End="-87.1666666666666,45.3776671408251" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-87.1666666666666,45.3776671408251"
+                    Point2="-91.1666666666666,45.3776671408251"
+                    Point3="-91.1666666666666,49.3776671408251" />
+                  <mssgle:LineSegment
+                    End="-91.1666666666666,69" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="122,42"
+          Id="Package\Populating Song Table\Lookup 1"
+          TopLeft="711,316" />
+        <EdgeLayout
+          Id="Package\Populating Song Table.Paths[Merge Join Output]"
+          TopLeft="753.5,269">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.5,47"
+              Start="0,0"
+              End="18.5,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.5"
+                    Point2="0,23.5"
+                    Point3="4,23.5" />
+                  <mssgle:LineSegment
+                    End="14.5,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.5,23.5"
+                    Point2="18.5,23.5"
+                    Point3="18.5,27.5" />
+                  <mssgle:LineSegment
+                    End="18.5,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="128,42"
+          Id="Package\Populating Song Table\Sort by SongID 1"
+          TopLeft="709,416" />
+        <EdgeLayout
+          Id="Package\Populating Song Table.Paths[Lookup Match Output]"
+          TopLeft="772.5,358">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,19.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Populating Song Table\Merge Join"
+          TopLeft="399,552" />
+        <EdgeLayout
+          Id="Package\Populating Song Table.Paths[Sort Output2]"
+          TopLeft="248,473.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="216,78.5"
+              Start="0,0"
+              End="216,71">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.25"
+                    Point2="0,39.25"
+                    Point3="4,39.25" />
+                  <mssgle:LineSegment
+                    End="212,39.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="212,39.25"
+                    Point2="216,39.25"
+                    Point3="216,43.25" />
+                  <mssgle:LineSegment
+                    End="216,71" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Populating Song Table.Paths[Sort Output3]"
+          TopLeft="773,458">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-288.666666666667,94"
+              Start="0,0"
+              End="-288.666666666667,86.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.7142857142857" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,51.7142857142857"
+                    Point2="0,55.7142857142857"
+                    Point3="-4,55.7142857142857" />
+                  <mssgle:LineSegment
+                    End="-284.666666666667,55.7142857142857" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-284.666666666667,55.7142857142857"
+                    Point2="-288.666666666667,55.7142857142857"
+                    Point3="-288.666666666667,59.7142857142857" />
+                  <mssgle:LineSegment
+                    End="-288.666666666667,86.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Populating Song Table\Lookup"
+          TopLeft="396,698" />
+        <EdgeLayout
+          Id="Package\Populating Song Table.Paths[Merge Join Output1]"
+          TopLeft="464,594">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-11.5,104"
+              Start="0,0"
+              End="-11.5,96.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,48"
+                    Point2="0,52"
+                    Point3="-4,52" />
+                  <mssgle:LineSegment
+                    End="-7.5,52" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-7.5,52"
+                    Point2="-11.5,52"
+                    Point3="-11.5,56" />
+                  <mssgle:LineSegment
+                    End="-11.5,96.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Populating Song Table.Paths[Lookup No Match Output]"
+          TopLeft="452.5,740">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-242.5,101.5"
+              Start="0,0"
+              End="-242.5,94">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,46.75"
+                    Point2="0,50.75"
+                    Point3="-4,50.75" />
+                  <mssgle:LineSegment
+                    End="-238.5,50.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-238.5,50.75"
+                    Point2="-242.5,50.75"
+                    Point3="-242.5,54.75" />
+                  <mssgle:LineSegment
+                    End="-242.5,94" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-177.05638671875,55.75,111.6127734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6373,6 +8646,55 @@ where [refTable].[Song_ID] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Populating Song Table\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Populating Song Table\Label(SpotifyDB)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Populating Song Table\Lookup 1">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[MusicLabel]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -6396,19 +8718,6 @@ where [refTable].[Song_ID] = ?</property>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Populating Song Table\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
