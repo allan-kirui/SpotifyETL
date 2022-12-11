@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="116"
-  DTS:VersionGUID="{931EBE69-EBF9-4E5C-A97A-BCD08DDC06ED}">
+  DTS:VersionBuild="122"
+  DTS:VersionGUID="{DAE9D202-1B24-4C82-859B-99DEF32FF0A9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -3913,6 +3913,987 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
               </outputs>
             </component>
             <component
+              refId="Package\Populating Song Table\Conversion of int to str"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;12"
+              description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
+              name="Conversion of int to str"
+              version="12">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Stores the source code of the component"
+                  isArray="true"
+                  name="SourceCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="30">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public override void ProcessInput(int InputID, string InputName, PipelineBuffer Buffer, OutputNameMap OutputMap)
+    {
+
+        if (InputName.Equals(@"Input 0", StringComparison.Ordinal))
+        {
+            Input0_ProcessInput(new Input0Buffer(Buffer, GetColumnIndexes(InputID), OutputMap));
+        }
+
+    }
+
+    public virtual void Input0_ProcessInput(Input0Buffer Buffer)
+    {
+        while (Buffer.NextRow())
+        {
+            Input0_ProcessInputRow(Buffer);
+        }
+    }
+
+    public virtual void Input0_ProcessInputRow(Input0Buffer Row)
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[#region Help:  Introduction to the Script Component
+/* The Script Component allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services data flow.
+ *
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script component. */
+#endregion
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+#endregion
+
+/// <summary>
+/// This is the class to which to add your code.  Do not change the name, attributes, or parent
+/// of this class.
+/// </summary>
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+    #region Help:  Using Integration Services variables and parameters
+    /* To use a variable in this script, first ensure that the variable has been added to
+     * either the list contained in the ReadOnlyVariables property or the list contained in
+     * the ReadWriteVariables property of this script component, according to whether or not your
+     * code needs to write into the variable.  To do so, save this script, close this instance of
+     * Visual Studio, and update the ReadOnlyVariables and ReadWriteVariables properties in the
+     * Script Transformation Editor window.
+     * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+     *
+     * Example of reading from a variable or parameter:
+     *  DateTime startTime = Variables.MyStartTime;
+     *
+     * Example of writing to a variable:
+     *  Variables.myStringVariable = "new value";
+     */
+    #endregion
+
+    #region Help:  Using Integration Services Connnection Managers
+    /* Some types of connection managers can be used in this script component.  See the help topic
+     * "Working with Connection Managers Programatically" for details.
+     *
+     * To use a connection manager in this script, first ensure that the connection manager has
+     * been added to either the list of connection managers on the Connection Managers page of the
+     * script component editor.  To add the connection manager, save this script, close this instance of
+     * Visual Studio, and add the Connection Manager to the list.
+     *
+     * If the component needs to hold a connection open while processing rows, override the
+     * AcquireConnections and ReleaseConnections methods.
+     * 
+     * Example of using an ADO.Net connection manager to acquire a SqlConnection:
+     *  object rawConnection = Connections.SalesDB.AcquireConnection(transaction);
+     *  SqlConnection salesDBConn = (SqlConnection)rawConnection;
+     *
+     * Example of using a File connection manager to acquire a file path:
+     *  object rawConnection = Connections.Prices_zip.AcquireConnection(transaction);
+     *  string filePath = (string)rawConnection;
+     *
+     * Example of releasing a connection manager:
+     *  Connections.SalesDB.ReleaseConnection(rawConnection);
+     */
+    #endregion
+
+    #region Help:  Firing Integration Services Events
+    /* This script component can fire events.
+     *
+     * Example of firing an error event:
+     *  ComponentMetaData.FireError(10, "Process Values", "Bad value", "", 0, out cancel);
+     *
+     * Example of firing an information event:
+     *  ComponentMetaData.FireInformation(10, "Process Values", "Processing has started", "", 0, fireAgain);
+     *
+     * Example of firing a warning event:
+     *  ComponentMetaData.FireWarning(10, "Process Values", "No rows were received", "", 0);
+     */
+    #endregion
+
+    /// <summary>
+    /// This method is called once, before rows begin to be processed in the data flow.
+    ///
+    /// You can remove this method if you don't need to do anything here.
+    /// </summary>
+    public override void PreExecute()
+    {
+        base.PreExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    /// <summary>
+    /// This method is called after all the rows have passed through this component.
+    ///
+    /// You can delete this method if you don't need to do anything here.
+    /// </summary>
+    public override void PostExecute()
+    {
+        base.PostExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    /// <summary>
+    /// This method is called once for every row that passes through the component from Input0.
+    ///
+    /// Example of reading a value from a column in the the row:
+    ///  string zipCode = Row.ZipCode
+    ///
+    /// Example of writing a value to a column in the row:
+    ///  Row.ZipCode = zipCode
+    /// </summary>
+    /// <param name="Row">The row that is currently passing through the component</param>
+    public override void Input0_ProcessInputRow(Input0Buffer Row)
+    {
+        /*
+         * Add your code here
+         */
+        if (Row.streams_IsNull)
+            Row.streamsStr_IsNull = true;
+        else if (Row.streams < 1000)
+            Row.streamsStr = "LITTLE";
+        else if (Row.streams <= 5000)
+            Row.streamsStr = "NORMAL";
+        else if (Row.streams > 5000)
+            Row.streamsStr = "A LOT";
+
+        if (Row.rankCategoryCsvInt_IsNull)
+            Row.rankCategorystr_IsNull = true;
+        else if (Row.rankCategoryCsvInt <= 20)
+            Row.rankCategorystr = "from 1 to 20";
+        else if (Row.rankCategoryCsvInt <= 50)
+            Row.rankCategorystr = "from 21 to 50";
+        else if (Row.rankCategoryCsvInt <= 70)
+            Row.rankCategorystr = "from 51 to 70";
+        else if (Row.rankCategoryCsvInt <= 100)
+            Row.rankCategorystr = "from 71 to 100";
+        else if (Row.rankCategoryCsvInt > 100)
+            Row.rankCategorystr = "more than 100";
+
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class Input0Buffer: ScriptBuffer
+
+{
+    public Input0Buffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public Int32 streams
+    {
+        get
+        {
+            return Buffer.GetInt32(BufferColumnIndexes[0]);
+        }
+    }
+    public bool streams_IsNull
+    {
+        get
+        {
+            return IsNull(0);
+        }
+    }
+
+    public UInt32 rankCategoryCsvInt
+    {
+        get
+        {
+            return Buffer.GetUInt32(BufferColumnIndexes[1]);
+        }
+    }
+    public bool rankCategoryCsvInt_IsNull
+    {
+        get
+        {
+            return IsNull(1);
+        }
+    }
+
+    public String streamsStr
+    {
+        set
+        {
+            this[2] = value;
+        }
+    }
+    public bool streamsStr_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(2);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String rankCategorystr
+    {
+        set
+        {
+            this[3] = value;
+        }
+    }
+    public bool rankCategorystr_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(3);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    new public bool NextRow()
+    {
+        return base.NextRow();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_3cfda7ee38864961adefbba56b1edaef.Properties.Settings.get_Default():SC_3cfda7ee38864961adefbba56b1edaef.Properties.Sett" +
+    "ings")]
+
+namespace SC_3cfda7ee38864961adefbba56b1edaef.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_3cfda7ee38864961adefbba56b1edaef.csproj]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{15def28c-bb01-4117-8a66-b92ba11a67a6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_3cfda7ee38864961adefbba56b1edaef</RootNamespace>
+    <AssemblyName>SC_3cfda7ee38864961adefbba56b1edaef</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="ScriptComponent" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" />
+        <Host Name="ScriptComponent" GeneratedNamespace="SC_3cfda7ee38864961adefbba56b1edaef" IconIndex="0"></Host>
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC150</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Project]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>SC_3cfda7ee38864961adefbba56b1edaef</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>SC_3cfda7ee38864961adefbba56b1edaef</msb:DisplayName>
+    <msb:ProjectId>{B994D401-EB45-4C3B-8604-5A183E3D3C69}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="SC_3cfda7ee38864961adefbba56b1edaef.csproj" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:File Include="main.cs" />
+    <msb:File Include="BufferWrapper.cs" />
+    <msb:File Include="ComponentWrapper.cs" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_3cfda7ee38864961adefbba56b1edaef")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SC_3cfda7ee38864961adefbba56b1edaef")]
+[assembly: AssemblyCopyright("Copyright @  2022")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_3cfda7ee38864961adefbba56b1edaef.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_3cfda7ee38864961adefbba56b1edaef.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_3cfda7ee38864961adefbba56b1edaef.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_3cfda7ee38864961adefbba56b1edaef.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_3cfda7ee38864961adefbba56b1edaef.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Stores the binary representation of the component"
+                  isArray="true"
+                  name="BinaryCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="2">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_3cfda7ee38864961adefbba56b1edaef.dll]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAFNUlmMAAAAAAAAAAOAAIiALATAAABYAAAAIAAAAAAAAWjQA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAAg0AABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAYBQAAAAgAAAAFgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAQAAAAAYAAAAYAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAHgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAA8
+NAAAAAAAAEgAAAACAAUAwCIAAJAQAAABAAAAAAAAAFAzAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBAAAAoqHgIoEQAACioTMAIA2wAAAAAAAAADbwcAAAYs
+CQMXbwsAAAYrTANvBgAABiDoAwAALw0DcgEAAHBvCgAABisyA28GAAAGIIgTAAAwDQNyDwAAcG8K
+AAAGKxgDbwYAAAYgiBMAADELA3IdAABwbwoAAAYDbwkAAAYsCAMXbw0AAAYqA28IAAAGHxQ1DANy
+KQAAcG8MAAAGKgNvCAAABh8yNQwDckMAAHBvDAAABioDbwgAAAYfRjUMA3JfAABwbwwAAAYqA28I
+AAAGH2Q1DANyewAAcG8MAAAGKgNvCAAABh9kNgsDcpkAAHBvDAAABioeAigQAAAGKioCAwQFKBIA
+AAoqUgJ7EwAACgJ7FAAAChaUbxUAAAoqIgIWKBYAAAoqUgJ7EwAACgJ7FAAACheUbxcAAAoqIgIX
+KBYAAAoqJgIYAygYAAAKKloDLAgCGCgZAAAKKnK1AABwcxoAAAp6JgIZAygYAAAKKloDLAgCGSgZ
+AAAKKnK1AABwcxoAAAp6HgIoGwAACioeAigcAAAKKn4CKB0AAAoCAnMUAAAGfQEAAAQCAnMVAAAG
+fQIAAAQqkgRyUgEAcBpvHgAACiwVAgUCAygfAAAKDgRzBQAABm8SAAAGKkorBwIDbxMAAAYDbw4A
+AAYt8SoGKjoCKCAAAAoCA30DAAAEKjoCKCAAAAoCA30EAAAEKh4CKCAAAAoqrn4FAAAELR5yYgEA
+cNAHAAACKCEAAApvIgAACnMjAAAKgAUAAAR+BQAABCoafgYAAAQqHgKABgAABCoafgcAAAQqHgIo
+JAAACioucxsAAAaABwAABCoAAEJTSkIBAAEAAAAAAAwAAAB2NC4wLjMwMzE5AAAAAAUAbAAAAOAF
+AAAjfgAATAYAAKwGAAAjU3RyaW5ncwAAAAD4DAAA1AEAACNVUwDMDgAAEAAAACNHVUlEAAAA3A4A
+ALQBAAAjQmxvYgAAAAAAAAACAAABVxWgAQkBAAAA+gEzABYAAAEAAAAfAAAACAAAAAcAAAAcAAAA
+EQAAACQAAAAQAAAAAwAAAAsAAAAMAAAAAQAAAAQAAAABAAAAAAD9AgEAAAAAAAYA0wHBBAYAZwLB
+BAYAHwGuBA8ANQUAAAYATAHgAwYAtgHgAwYAlwHgAwYATgLgAwYA8wHgAwYADALgAwYAYwHgAwYA
+fgHGAgoAJwJsAAoAXQRsAA4ATgRsAAoAKQRsAAoAHgZsAAYAygWYAwYAAgGuBAYAbgThBAYAHQTL
+AxIA0gDnAhIAMwHnAhIAugC2AwYA5wDBBAYA8gOYAwYA4AKYAwYADASYAwYAjQCYAwYAPgCYAwYA
+owbgAwAAAAAUAAAAAAABAAEAAQAQAKsDAAAQAAEAAQABABAAQQQAADkAAQAFAAEAEAAABgAARQAB
+ABAAAQAQAL4FAABJAAMAFAABABAAcwUAAEkABAAVAAAAEADoBEQFSQAFABYAAAEQAKIFRAVhAAcA
+GgAGAL4FeAAGAHMFfAABAA4GgAABAA4GgAARAJ8DhAARAKoAiAARAC4AjABQIAAAAADGAIUCBgAB
+AFggAAAAAMYAkAIGAAEAYCAAAAAAxgCABpAAAQBHIQAAAACGGH4EBgACAE8hAAAAAIYYfgQbAAIA
+WiEAAAAAhgiyBZYABQBvIQAAAACGCFYDQgAFAHghAAAAAIYI6QWaAAUAjSEAAAAAhghpA0IABQCW
+IQAAAACGCIsEEAAFAKAhAAAAAIYIJQOeAAYAtyEAAAAAhgiaBBAABwDBIQAAAACGCDsDngAIANgh
+AAAAAIYAlwZCAAkA4CEAAAAAhgDRBUIACQDoIQAAAACGGH4EBgAJAAgiAAAAAMYAcwajAAkALSIA
+AAAAxgFsBpAADQBAIgAAAADGAYAGkAAOAEIiAAAAAIYYfgStAA8AUSIAAAAAhhh+BK0AEABgIgAA
+AACDGH4EBgARAGgiAAAAAJMIagSzABEAlCIAAAAAkwiSALgAEQCbIgAAAACTCJ4AvQARAKMiAAAA
+AJYI3QXDABIAqiIAAAAAhhh+BAYAEgCyIgAAAACRGIQEyAASAAAAAQCbBgAAAQBjBAAAAgB9BQAA
+AwA3BAAAAQCcAgAAAQCcAgAAAQCcAgAAAQCcAgAAAQAdAAAAAgBiAAAAAwBjBAAABAA3BAAAAQBj
+BAAAAQCbBgAAAQAkBgAAAQAkBgAAAQCcAgkAfgQBABEAfgQGABkAfgQKACkAfgQQADEAfgQQADkA
+fgQQAEEAfgQQAEkAfgQQAFEAfgQQAFkAfgQQAGEAfgQQAGkAfgQGAJkAfgQGALkAfgQVAMkAfgQG
+AIkAhQIGAIkAkAIGAHEAfgQbAHEAYwQlAHEAfQUpAHkACwAtAHEAgAMyAHkAAQA3AHEAjwM8AHEA
+hwMBANEAfgQQAHEAlwZCAHEA0QVCAIkAfgQGANkAqwVGAIkAkQVNAJEAfgQGAOkAUABTAOkAnwZa
+AKEAfgRfAMEAfgQGAC4ACwDrAC4AEwD0AC4AGwATAS4AIwAcAS4AKwBFAS4AMwBFAS4AOwBFAS4A
+QwAcAS4ASwBLAS4AUwBFAS4AWwBiAUMAYwCsAeEAewCsAeMAawCsASkBcwATAUkBcwATAQMAAQAH
+AAkACAALAAAAtgXMAAAAWgPQAAAA7QXUAAAAbQPQAAAAjwTYAAAAKQPQAAAAngTYAAAAPwPQAAAA
+bgTcAAAAsgDhAAAA4QXmAAIABgADAAIABwAFAAIACAAHAAIACQAJAAEACgALAAEACwANAAEADAAP
+AAEADQARAAIAFwATAAIAGAAVAAEAGQAVAAIAGgAXAASAAAABAAAAAAAAAAAAAAAAAKICAAAEAAAA
+AAAAAAAAAABmACUAAAAAAA8AAAAAAAAAAAAAAG8ALgYAAAAADwAAAAAAAAAAAAAAbwBLBgAAAAAE
+AAAAAAAAAAAAAABmAJgDAAAAAAAAAAABAAAA8gQAAAAAAAAAR2V0VUludDMyAEdldEludDMyADxN
+b2R1bGU+AElucHV0SUQAbXNjb3JsaWIAZGVmYXVsdEluc3RhbmNlAFJ1bnRpbWVUeXBlSGFuZGxl
+AEdldFR5cGVGcm9tSGFuZGxlAElucHV0TmFtZQBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5QaXBl
+bGluZQBUeXBlAGdldF9DdWx0dXJlAHNldF9DdWx0dXJlAHJlc291cmNlQ3VsdHVyZQBBcHBsaWNh
+dGlvblNldHRpbmdzQmFzZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBDb21waWxlckdlbmVyYXRlZEF0
+dHJpYnV0ZQBEZWJ1Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAERlYnVnZ2FibGVBdHRyaWJ1dGUA
+RWRpdG9yQnJvd3NhYmxlQXR0cmlidXRlAEFzc2VtYmx5VGl0bGVBdHRyaWJ1dGUAQXNzZW1ibHlU
+cmFkZW1hcmtBdHRyaWJ1dGUAVGFyZ2V0RnJhbWV3b3JrQXR0cmlidXRlAEFzc2VtYmx5Q29uZmln
+dXJhdGlvbkF0dHJpYnV0ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0cmlidXRlAENvbXBpbGF0aW9u
+UmVsYXhhdGlvbnNBdHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5Q29w
+eXJpZ2h0QXR0cmlidXRlAFNTSVNTY3JpcHRDb21wb25lbnRFbnRyeVBvaW50QXR0cmlidXRlAEFz
+c2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQBQcmVF
+eGVjdXRlAFBvc3RFeGVjdXRlAHZhbHVlAFNDXzNjZmRhN2VlMzg4NjQ5NjFhZGVmYmJhNTZiMWVk
+YWVmAFN5c3RlbS5SdW50aW1lLlZlcnNpb25pbmcAU3RyaW5nAFN5c3RlbS5Db21wb25lbnRNb2Rl
+bABTQ18zY2ZkYTdlZTM4ODY0OTYxYWRlZmJiYTU2YjFlZGFlZi5kbGwAc2V0X3N0cmVhbXNTdHJf
+SXNOdWxsAHNldF9yYW5rQ2F0ZWdvcnlzdHJfSXNOdWxsAGdldF9zdHJlYW1zX0lzTnVsbABnZXRf
+cmFua0NhdGVnb3J5Q3N2SW50X0lzTnVsbABTZXROdWxsAHNldF9JdGVtAFN5c3RlbQByZXNvdXJj
+ZU1hbgBTY3JpcHRNYWluAFN5c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5HbG9iYWxpemF0aW9u
+AFN5c3RlbS5SZWZsZWN0aW9uAEludmFsaWRPcGVyYXRpb25FeGNlcHRpb24AU3RyaW5nQ29tcGFy
+aXNvbgBDdWx0dXJlSW5mbwBPdXRwdXROYW1lTWFwAE91dHB1dE1hcABJbnB1dDBCdWZmZXIAUGlw
+ZWxpbmVCdWZmZXIAU2NyaXB0QnVmZmVyAGdldF9SZXNvdXJjZU1hbmFnZXIALmN0b3IALmNjdG9y
+AHNldF9zdHJlYW1zU3RyAHNldF9yYW5rQ2F0ZWdvcnlzdHIAU3lzdGVtLkRpYWdub3N0aWNzAFN5
+c3RlbS5SdW50aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJlc291cmNlcwBTQ18zY2ZkYTdl
+ZTM4ODY0OTYxYWRlZmJiYTU2YjFlZGFlZi5Qcm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMA
+RGVidWdnaW5nTW9kZXMAU0NfM2NmZGE3ZWUzODg2NDk2MWFkZWZiYmE1NmIxZWRhZWYuUHJvcGVy
+dGllcwBWYXJpYWJsZXMAQnVmZmVyQ29sdW1uSW5kZXhlcwBHZXRDb2x1bW5JbmRleGVzAFNldHRp
+bmdzAEVxdWFscwBnZXRfc3RyZWFtcwBDb25uZWN0aW9ucwBPYmplY3QARW5kT2ZSb3dzZXQAZ2V0
+X0RlZmF1bHQAZ2V0X3JhbmtDYXRlZ29yeUNzdkludABVc2VyQ29tcG9uZW50AFBhcmVudENvbXBv
+bmVudABTY3JpcHRDb21wb25lbnQATWljcm9zb2Z0LlNxbFNlcnZlci5UeFNjcmlwdABNaWNyb3Nv
+ZnQuU3FsU2VydmVyLlBpcGVsaW5lSG9zdABJbnB1dDBfUHJvY2Vzc0lucHV0AElucHV0MF9Qcm9j
+ZXNzSW5wdXRSb3cATmV4dFJvdwBnZXRfQXNzZW1ibHkAAA1MAEkAVABUAEwARQAADU4ATwBSAE0A
+QQBMAAALQQAgAEwATwBUAAAZZgByAG8AbQAgADEAIAB0AG8AIAAyADAAABtmAHIAbwBtACAAMgAx
+ACAAdABvACAANQAwAAAbZgByAG8AbQAgADUAMQAgAHQAbwAgADcAMAAAHWYAcgBvAG0AIAA3ADEA
+IAB0AG8AIAAxADAAMAAAG20AbwByAGUAIAB0AGgAYQBuACAAMQAwADAAAICbSQBzAE4AdQBsAGwA
+IABwAHIAbwBwAGUAcgB0AHkAIABjAGEAbgBuAG8AdAAgAGIAZQAgAHMAZQB0ACAAdABvACAARgBh
+AGwAcwBlAC4AIABBAHMAcwBpAGcAbgAgAGEAIAB2AGEAbAB1AGUAIAB0AG8AIAB0AGgAZQAgAGMA
+bwBsAHUAbQBuACAAaQBuAHMAdABlAGEAZAAuAAAPSQBuAHAAdQB0ACAAMAAAcVMAQwBfADMAYwBm
+AGQAYQA3AGUAZQAzADgAOAA2ADQAOQA2ADEAYQBkAGUAZgBiAGIAYQA1ADYAYgAxAGUAZABhAGUA
+ZgAuAFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAA6zxvyantYEiHPWVv
+xIQLvAAEIAEBCAMgAAEFIAEBEREEIAEBDgUgAQERWQkgAwESPR0IEkEDBhI9AwYdCAQgAQgIBCAB
+AggEIAEJCAUgAgEIHAMgAAIGIAICDhFxBSABHQgIBgABEnUReQQgABJ9BiACAQ4SfQi3elxWGTTg
+iQiJhF3NgIDMkQMGEhQDBhIYAwYSRQMGElEDBhJVAwYSIAUgAQESDAMgAAgDIAAJBCABAQIJIAQB
+CA4SPRJBBSABARJFBAAAElEEAAASVQUAAQESVQQAABIgAwAAAQMoAAgDKAACAygACQMoAA4ECAAS
+UQQIABJVBAgAEiAIAQAIAAAAAAAeAQABAFQCFldyYXBOb25FeGNlcHRpb25UaHJvd3MBCAEAAgAA
+AAAAKAEAI1NDXzNjZmRhN2VlMzg4NjQ5NjFhZGVmYmJhNTZiMWVkYWVmAAAFAQAAAAAWAQARQ29w
+eXJpZ2h0IEAgIDIwMjIAAEkBABouTkVURnJhbWV3b3JrLFZlcnNpb249djQuNwEAVA4URnJhbWV3
+b3JrRGlzcGxheU5hbWUSLk5FVCBGcmFtZXdvcmsgNC43BAEAAAAAAAC0AAAAzsrvvgEAAACRAAAA
+bFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4w
+LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0
+ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAAMDQA
+AAAAAAAAAAAASjQAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAADw0AAAAAAAAAAAAAAAAX0NvckRs
+bE1haW4AbXNjb3JlZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAABABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAAAABI
+AAAAWEAAAOwDAAAAAAAAAAAAAOwDNAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBPAAAA
+AAC9BO/+AAABAAAAAQAAAAAAAAABAAAAAAA/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAARAAA
+AAEAVgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBvAG4A
+AAAAAAAAsARMAwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAAAoAwAAAQAwADAAMAAw
+ADAANABiADAAAAAaAAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAAIgABAAEAQwBvAG0AcABhAG4A
+eQBOAGEAbQBlAAAAAAAAAAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AAAAA
+AFMAQwBfADMAYwBmAGQAYQA3AGUAZQAzADgAOAA2ADQAOQA2ADEAYQBkAGUAZgBiAGIAYQA1ADYA
+YgAxAGUAZABhAGUAZgAAADAACAABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgAw
+AC4AMAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBDAF8AMwBjAGYAZABhADcA
+ZQBlADMAOAA4ADYANAA5ADYAMQBhAGQAZQBmAGIAYgBhADUANgBiADEAZQBkAGEAZQBmAC4AZABs
+AGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABDAG8AcAB5AHIAaQBnAGgA
+dAAgAEAAIAAgADIAMAAyADIAAAAqAAEAAQBMAGUAZwBhAGwAVAByAGEAZABlAG0AYQByAGsAcwAA
+AAAAAAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4AYQBtAGUAAABTAEMAXwAzAGMA
+ZgBkAGEANwBlAGUAMwA4ADgANgA0ADkANgAxAGEAZABlAGYAYgBiAGEANQA2AGIAMQBlAGQAYQBl
+AGYALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0AZQAAAAAAUwBDAF8AMwBjAGYA
+ZABhADcAZQBlADMAOAA4ADYANAA5ADYAMQBhAGQAZQBmAGIAYgBhADUANgBiADEAZQBkAGEAZQBm
+AAAANAAIAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAADgA
+CAABAEEAcwBzAGUAbQBiAGwAeQAgAFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADAALgAwAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAwAAABcNAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                  name="VSTAProjectName"
+                  typeConverter="NOTBROWSABLE">SC_3cfda7ee38864961adefbba56b1edaef</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the programming language used by the script."
+                  name="ScriptLanguage"
+                  typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read-only variables."
+                  name="ReadOnlyVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read/write variables."
+                  name="ReadWriteVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="List of breakpoints present on the script."
+                  isArray="true"
+                  name="BreakpointCollection"
+                  typeConverter="NOTBROWSABLE">
+                  <arrayElements
+                    arrayElementCount="0" />
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataChecksum140"
+                  typeConverter="NOTBROWSABLE">24</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Populating Song Table\Conversion of int to str.Inputs[Input 0]"
+                  hasSideEffects="true"
+                  name="Input 0">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Conversion of int to str.Inputs[Input 0].Columns[streams]"
+                      cachedDataType="i4"
+                      cachedName="streams"
+                      lineageId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[streams]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\Conversion of int to str.Inputs[Input 0].Columns[rankCategoryCsvInt]"
+                      cachedDataType="ui4"
+                      cachedName="rankCategoryCsvInt"
+                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[rankCategoryCsvInt]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Populating Song Table\Conversion of int to str.Outputs[Output 0]"
+                  name="Output 0"
+                  synchronousInputId="Package\Populating Song Table\Conversion of int to str.Inputs[Input 0]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Conversion of int to str.Outputs[Output 0].Columns[streamsStr]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Conversion of int to str.Outputs[Output 0].Columns[streamsStr]"
+                      name="streamsStr" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Conversion of int to str.Outputs[Output 0].Columns[rankCategorystr]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Conversion of int to str.Outputs[Output 0].Columns[rankCategorystr]"
+                      name="rankCategorystr" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Populating Song Table\Convert from unicode"
               componentClassID="Microsoft.DataConvert"
               contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -4013,6 +4994,159 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
                       refId="Package\Populating Song Table\Convert from unicode.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Populating Song Table\Convert from unicode.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Populating Song Table\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Populating Song Table\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Derived Column 1.Inputs[Derived Column Input].Columns[PublicationDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="PublicationDate"
+                      lineageId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[PublicationDate]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\Derived Column 1.Inputs[Derived Column Input].Columns[rankCategorycsv]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="rankCategorycsv"
+                      lineageId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[rankCategorycsv]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Populating Song Table\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateDay]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateDay]"
+                      name="PublicationDateDay"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DATEPART]("Dd",(DT_DBDATE)#{Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[PublicationDate]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DATEPART("Dd",(DT_DBDATE)PublicationDate)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateYear]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateYear]"
+                      name="PublicationDateYear"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DATEPART]("yyyy",(DT_DBDATE)#{Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[PublicationDate]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DATEPART("yyyy",(DT_DBDATE)PublicationDate)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateMonth]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateMonth]"
+                      name="PublicationDateMonth"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DATEPART]("Mm",(DT_DBDATE)#{Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[PublicationDate]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DATEPART("Mm",(DT_DBDATE)PublicationDate)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[rankCategoryCsvInt]"
+                      dataType="ui4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[rankCategoryCsvInt]"
+                      name="rankCategoryCsvInt"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">((DT_UI4)#{Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[rankCategorycsv]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">((DT_UI4)rankCategorycsv)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Populating Song Table\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -4394,11 +5528,11 @@ where [refTable].[S_ID] = ?</property>
                   synchronousInputId="Package\Populating Song Table\Lookup.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Populating Song Table\Lookup.Outputs[Lookup Match Output].Columns[Current_Flag]"
+                      refId="Package\Populating Song Table\Lookup.Outputs[Lookup Match Output].Columns[current]"
                       dataType="bool"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Populating Song Table\Lookup.Outputs[Lookup Match Output].Columns[Current_Flag]"
-                      name="Current_Flag"
+                      lineageId="Package\Populating Song Table\Lookup.Outputs[Lookup Match Output].Columns[current]"
+                      name="current"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -4660,6 +5794,14 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
                       cachedName="S_IDcsv"
                       cachedSortKeyPosition="1"
                       lineageId="Package\Populating Song Table\Removing duplicates and sort by S_ID.Outputs[Sort Output].Columns[S_IDcsv]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\Merge Join.Inputs[Merge Join Left Input].Columns[rankCategorycsv]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="rankCategorycsv"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Populating Song Table\Removing duplicates and sort by S_ID.Outputs[Sort Output].Columns[rankCategorycsv]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -4721,6 +5863,11 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
                       cachedDataType="i4"
                       cachedName="LabelID DW"
                       lineageId="Package\Populating Song Table\Sort by S_ID.Outputs[Sort Output].Columns[LabelID DW]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\Merge Join.Inputs[Merge Join Right Input].Columns[PublicationDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="PublicationDate"
+                      lineageId="Package\Populating Song Table\Sort by S_ID.Outputs[Sort Output].Columns[PublicationDate]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -4846,6 +5993,34 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
                           dataType="System.Int32"
                           description="The input column associated with this output column"
                           name="InputColumnID">#{Package\Populating Song Table\Merge Join.Inputs[Merge Join Right Input].Columns[S_ID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[PublicationDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[PublicationDate]"
+                      name="PublicationDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating Song Table\Merge Join.Inputs[Merge Join Right Input].Columns[PublicationDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[rankCategorycsv]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[rankCategorycsv]"
+                      name="rankCategorycsv">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating Song Table\Merge Join.Inputs[Merge Join Left Input].Columns[rankCategorycsv]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -5255,6 +6430,961 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
               </outputs>
             </component>
             <component
+              refId="Package\Populating Song Table\Month conversion from int to str"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;12"
+              description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
+              name="Month conversion from int to str"
+              version="12">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Stores the source code of the component"
+                  isArray="true"
+                  name="SourceCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="30">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public override void ProcessInput(int InputID, string InputName, PipelineBuffer Buffer, OutputNameMap OutputMap)
+    {
+
+        if (InputName.Equals(@"Input 0", StringComparison.Ordinal))
+        {
+            Input0_ProcessInput(new Input0Buffer(Buffer, GetColumnIndexes(InputID), OutputMap));
+        }
+
+    }
+
+    public virtual void Input0_ProcessInput(Input0Buffer Buffer)
+    {
+        while (Buffer.NextRow())
+        {
+            Input0_ProcessInputRow(Buffer);
+        }
+    }
+
+    public virtual void Input0_ProcessInputRow(Input0Buffer Row)
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[#region Help:  Introduction to the Script Component
+/* The Script Component allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services data flow.
+ *
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script component. */
+#endregion
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+#endregion
+
+/// <summary>
+/// This is the class to which to add your code.  Do not change the name, attributes, or parent
+/// of this class.
+/// </summary>
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+    #region Help:  Using Integration Services variables and parameters
+    /* To use a variable in this script, first ensure that the variable has been added to
+     * either the list contained in the ReadOnlyVariables property or the list contained in
+     * the ReadWriteVariables property of this script component, according to whether or not your
+     * code needs to write into the variable.  To do so, save this script, close this instance of
+     * Visual Studio, and update the ReadOnlyVariables and ReadWriteVariables properties in the
+     * Script Transformation Editor window.
+     * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+     *
+     * Example of reading from a variable or parameter:
+     *  DateTime startTime = Variables.MyStartTime;
+     *
+     * Example of writing to a variable:
+     *  Variables.myStringVariable = "new value";
+     */
+    #endregion
+
+    #region Help:  Using Integration Services Connnection Managers
+    /* Some types of connection managers can be used in this script component.  See the help topic
+     * "Working with Connection Managers Programatically" for details.
+     *
+     * To use a connection manager in this script, first ensure that the connection manager has
+     * been added to either the list of connection managers on the Connection Managers page of the
+     * script component editor.  To add the connection manager, save this script, close this instance of
+     * Visual Studio, and add the Connection Manager to the list.
+     *
+     * If the component needs to hold a connection open while processing rows, override the
+     * AcquireConnections and ReleaseConnections methods.
+     * 
+     * Example of using an ADO.Net connection manager to acquire a SqlConnection:
+     *  object rawConnection = Connections.SalesDB.AcquireConnection(transaction);
+     *  SqlConnection salesDBConn = (SqlConnection)rawConnection;
+     *
+     * Example of using a File connection manager to acquire a file path:
+     *  object rawConnection = Connections.Prices_zip.AcquireConnection(transaction);
+     *  string filePath = (string)rawConnection;
+     *
+     * Example of releasing a connection manager:
+     *  Connections.SalesDB.ReleaseConnection(rawConnection);
+     */
+    #endregion
+
+    #region Help:  Firing Integration Services Events
+    /* This script component can fire events.
+     *
+     * Example of firing an error event:
+     *  ComponentMetaData.FireError(10, "Process Values", "Bad value", "", 0, out cancel);
+     *
+     * Example of firing an information event:
+     *  ComponentMetaData.FireInformation(10, "Process Values", "Processing has started", "", 0, fireAgain);
+     *
+     * Example of firing a warning event:
+     *  ComponentMetaData.FireWarning(10, "Process Values", "No rows were received", "", 0);
+     */
+    #endregion
+
+    /// <summary>
+    /// This method is called once, before rows begin to be processed in the data flow.
+    ///
+    /// You can remove this method if you don't need to do anything here.
+    /// </summary>
+    public override void PreExecute()
+    {
+        base.PreExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    /// <summary>
+    /// This method is called after all the rows have passed through this component.
+    ///
+    /// You can delete this method if you don't need to do anything here.
+    /// </summary>
+    public override void PostExecute()
+    {
+        base.PostExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    /// <summary>
+    /// This method is called once for every row that passes through the component from Input0.
+    ///
+    /// Example of reading a value from a column in the the row:
+    ///  string zipCode = Row.ZipCode
+    ///
+    /// Example of writing a value to a column in the row:
+    ///  Row.ZipCode = zipCode
+    /// </summary>
+    /// <param name="Row">The row that is currently passing through the component</param>
+    public override void Input0_ProcessInputRow(Input0Buffer Row)
+    {
+        /*
+         * Add your code here
+         */
+
+        if (Row.PublicationDateMonth_IsNull)
+        {
+            Row.PublicationDateMonthStr_IsNull = true;
+        }
+        else
+        {
+            Row.PublicationDateMonthStr = MonthAssign(Row.PublicationDateMonth);
+        }
+    }
+
+    public string MonthAssign(int monthNo)
+    {
+        string monthStr;
+        switch (monthNo)
+        {
+            case 1:
+                monthStr = "January";
+                break;
+            case 2:
+                monthStr = "February";
+                break;
+            case 3:
+                monthStr = "March";
+                break;
+            case 4:
+                monthStr = "April";
+                break;
+            case 5:
+                monthStr = "May";
+                break;
+            case 6:
+                monthStr = "June";
+                break;
+            case 7:
+                monthStr = "July";
+                break;
+            case 8:
+                monthStr = "August";
+                break;
+            case 9:
+                monthStr = "September";
+                break;
+            case 10:
+                monthStr = "October";
+                break;
+            case 11:
+                monthStr = "November";
+                break;
+            default:
+                monthStr = "December";
+                break;
+        }
+        return monthStr;
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class Input0Buffer: ScriptBuffer
+
+{
+    public Input0Buffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public Int32 PublicationDateMonth
+    {
+        get
+        {
+            return Buffer.GetInt32(BufferColumnIndexes[0]);
+        }
+    }
+    public bool PublicationDateMonth_IsNull
+    {
+        get
+        {
+            return IsNull(0);
+        }
+    }
+
+    public String PublicationDateMonthStr
+    {
+        set
+        {
+            this[1] = value;
+        }
+    }
+    public bool PublicationDateMonthStr_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(1);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    new public bool NextRow()
+    {
+        return base.NextRow();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_4f3bbd03a62c498b827fba0fa23be6ee.Properties.Settings.get_Default():SC_4f3bbd03a62c498b827fba0fa23be6ee.Properties.Sett" +
+    "ings")]
+
+namespace SC_4f3bbd03a62c498b827fba0fa23be6ee.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_4f3bbd03a62c498b827fba0fa23be6ee.csproj]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{dbbf9357-815b-4321-b4f5-90911eb9ed27}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_4f3bbd03a62c498b827fba0fa23be6ee</RootNamespace>
+    <AssemblyName>SC_4f3bbd03a62c498b827fba0fa23be6ee</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="ScriptComponent" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" />
+        <Host Name="ScriptComponent" GeneratedNamespace="SC_4f3bbd03a62c498b827fba0fa23be6ee" IconIndex="0"></Host>
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC150</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Project]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>SC_4f3bbd03a62c498b827fba0fa23be6ee</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>SC_4f3bbd03a62c498b827fba0fa23be6ee</msb:DisplayName>
+    <msb:ProjectId>{13E22C3A-144B-4F01-A13E-918E540ADEF7}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="SC_4f3bbd03a62c498b827fba0fa23be6ee.csproj" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:File Include="main.cs" />
+    <msb:File Include="BufferWrapper.cs" />
+    <msb:File Include="ComponentWrapper.cs" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+  </msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_4f3bbd03a62c498b827fba0fa23be6ee")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SC_4f3bbd03a62c498b827fba0fa23be6ee")]
+[assembly: AssemblyCopyright("Copyright @  2022")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_4f3bbd03a62c498b827fba0fa23be6ee.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_4f3bbd03a62c498b827fba0fa23be6ee.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_4f3bbd03a62c498b827fba0fa23be6ee.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_4f3bbd03a62c498b827fba0fa23be6ee.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_4f3bbd03a62c498b827fba0fa23be6ee.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Stores the binary representation of the component"
+                  isArray="true"
+                  name="BinaryCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="2">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_4f3bbd03a62c498b827fba0fa23be6ee.dll]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAH5FlmMAAAAAAAAAAOAAIiALATAAABQAAAAIAAAAAAAAajMA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAABgzAABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAcBMAAAAgAAAAFAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAQAAAAAYAAAAWAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAHAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAABM
+MwAAAAAAAEgAAAACAAUAYCIAAAAQAAABAAAAAAAAAGAyAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBAAAAoqHgIoEQAACiqOA28IAAAGLAgDF28KAAAGKgMC
+A28HAAAGKAQAAAZvCQAABioTMAIAlgAAAAEAABEDF1lFCwAAAAIAAAAKAAAAEgAAABoAAAAiAAAA
+KgAAADIAAAA6AAAAQgAAAEoAAABSAAAAK1hyAQAAcAorVnIRAABwCitOciMAAHAKK0ZyLwAAcAor
+PnI7AABwCis2ckMAAHAKKy5yTQAAcAorJnJXAABwCisecmUAAHAKKxZyeQAAcAorDnKJAABwCisG
+cpsAAHAKBioeAigNAAAGKioCAwQFKBIAAAoqUgJ7EwAACgJ7FAAAChaUbxUAAAoqIgIWKBYAAAoq
+JgIXAygXAAAKKloDLAgCFygYAAAKKnKtAABwcxkAAAp6HgIoGgAACioeAigbAAAKKn4CKBwAAAoC
+AnMRAAAGfQEAAAQCAnMSAAAGfQIAAAQqkgRySgEAcBpvHQAACiwVAgUCAygeAAAKDgRzBgAABm8P
+AAAGKkorBwIDbxAAAAYDbwsAAAYt8SoGKjoCKB8AAAoCA30DAAAEKjoCKB8AAAoCA30EAAAEKh4C
+KB8AAAoqrn4FAAAELR5yWgEAcNAHAAACKCAAAApvIQAACnMiAAAKgAUAAAR+BQAABCoafgYAAAQq
+HgKABgAABCoafgcAAAQqHgIoIwAACioucxgAAAaABwAABCoAAEJTSkIBAAEAAAAAAAwAAAB2NC4w
+LjMwMzE5AAAAAAUAbAAAAIAFAAAjfgAA7AUAAIgGAAAjU3RyaW5ncwAAAAB0DAAAzAEAACNVUwBA
+DgAAEAAAACNHVUlEAAAAUA4AALABAAAjQmxvYgAAAAAAAAACAAABVxWiAQkBAAAA+gEzABYAAAEA
+AAAfAAAACAAAAAcAAAAZAAAAEAAAACMAAAAQAAAAAQAAAAMAAAAHAAAACAAAAAEAAAAEAAAAAQAA
+AAAADAMBAAAAAAAGAO0BvgQGAIECvgQGADkBqwQPADIFAAAGAGYB3AMGANAB3AMGALEB3AMGAGgC
+3AMGAA0C3AMGACYC3AMGAH0B3AMGAJgBvAIKAEEChgAKAGEEhgAOAFIEhgAKAC0EhgAKAPgFhgAG
+ALsFiAMGABwBqwQGAHIE3gQGACEExwMSAOwA9gISAE0B9gISANQAsgMGAAEBvgQGAO4DiAMGANYC
+iAMGAAgEiAMGAKcAiAMGAFgAiAMGAH0G3AMAAAAACgAAAAAAAQABAAEAEACnAwAAEAABAAEAAQAQ
+AEUEAAA5AAEABgABABAA2gUAAEUAAQANAAEAEACvBQAASQADABEAAQAQAHAFAABJAAQAEgAAABAA
+5QRBBUkABQATAAABEACfBUEFYQAHABcABgCvBXcABgBwBXsAAQDoBX8AAQDoBX8AEQCPA4MAEQDE
+AIcAEQAkAIsAUCAAAAAAxgCfAgYAAQBYIAAAAADGAKoCBgABAGAgAAAAAMYAWgaPAAEAhCAAAAAA
+hgCbA5UAAgAmIQAAAACGGIIEBgADAC4hAAAAAIYYggQfAAMAOSEAAAAAhgjdApoABgBOIQAAAACG
+CDQDQQAGAFchAAAAAIYIjwQQAAYAYSEAAAAAhghUA54ABwB4IQAAAACGAHEGQQAIAIAhAAAAAIYA
+wgVBAAgAiCEAAAAAhhiCBAYACACoIQAAAADGAE0GowAIAM0hAAAAAMYBRgaPAAwA4CEAAAAAxgFa
+Bo8ADQDiIQAAAACGGIIErQAOAPEhAAAAAIYYggStAA8AACIAAAAAgxiCBAYAEAAIIgAAAACTCG4E
+swAQADQiAAAAAJMIrAC4ABAAOyIAAAAAkwi4AL0AEABDIgAAAACWCM4FwwARAEoiAAAAAIYYggQG
+ABEAUiIAAAAAkRiIBMgAEQAAAAEAdQYAAAEAGQQAAAEAZwQAAAIAegUAAAMAOwQAAAEAtgIAAAEA
+tgIAAAEAEwAAAAIAfAAAAAMAZwQAAAQAOwQAAAEAZwQAAAEAdQYAAAEA/gUAAAEA/gUAAAEAtgIJ
+AIIEAQARAIIEBgAZAIIECgApAIIEEAAxAIIEEAA5AIIEEABBAIIEEABJAIIEEABRAIIEEABZAIIE
+EABhAIIEEABpAIIEBgCZAIIEBgC5AIIEFQDJAIIEBgCJAJ8CBgCJAKoCBgBxAIIEHwBxAGcEKQBx
+AHoFLQB5AAEAMQBxAHADNgBxAH8DOwBxAHcDAQDRAIIEEABxAHEGQQBxAMIFQQCJAIIEBgDZAKgF
+RQCJAI4FTACRAIIEBgDpAGoAUgDpAHkGWQChAIIEXgDBAIIEBgAuAAsA5wAuABMA8AAuABsADwEu
+ACMAGAEuACsAQQEuADMAQQEuADsAQQEuAEMAGAEuAEsARwEuAFMAQQEuAFsAXgFDAGMAqAGpAHMA
+DwHJAHMADwHhAHsAqAHjAGsAqAEbAAMAAQAHAAUACAAHAAAA4QLMAAAAOAPQAAAAkwTUAAAAWAPQ
+AAAAcgTYAAAAzADdAAAA0gXiAAIABwADAAIACAAFAAEACQAHAAEACgAJAAIAFAALAAIAFQANAAEA
+FgANAAIAFwAPAASAAAABAAAAAAAAAAAAAAAAADQAAAAEAAAAAAAAAAAAAABlABsAAAAAAA8AAAAA
+AAAAAAAAAG4ACAYAAAAADwAAAAAAAAAAAAAAbgAlBgAAAAAEAAAAAAAAAAAAAABlAIgDAAAAAAAA
+AAABAAAA7wQAAAAAAAAAR2V0SW50MzIAPE1vZHVsZT4ASW5wdXRJRABtc2NvcmxpYgBkZWZhdWx0
+SW5zdGFuY2UAU0NfNGYzYmJkMDNhNjJjNDk4YjgyN2ZiYTBmYTIzYmU2ZWUAUnVudGltZVR5cGVI
+YW5kbGUAR2V0VHlwZUZyb21IYW5kbGUASW5wdXROYW1lAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRz
+LlBpcGVsaW5lAFR5cGUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0dXJlAEFw
+cGxpY2F0aW9uU2V0dGluZ3NCYXNlAEVkaXRvckJyb3dzYWJsZVN0YXRlAENvbXBpbGVyR2VuZXJh
+dGVkQXR0cmlidXRlAERlYnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUARGVidWdnYWJsZUF0dHJp
+YnV0ZQBFZGl0b3JCcm93c2FibGVBdHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3Nl
+bWJseVRyYWRlbWFya0F0dHJpYnV0ZQBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUAQXNzZW1ibHlD
+b25maWd1cmF0aW9uQXR0cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQ29tcGls
+YXRpb25SZWxheGF0aW9uc0F0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1i
+bHlDb3B5cmlnaHRBdHRyaWJ1dGUAU1NJU1NjcmlwdENvbXBvbmVudEVudHJ5UG9pbnRBdHRyaWJ1
+dGUAQXNzZW1ibHlDb21wYW55QXR0cmlidXRlAFJ1bnRpbWVDb21wYXRpYmlsaXR5QXR0cmlidXRl
+AFByZUV4ZWN1dGUAUG9zdEV4ZWN1dGUAdmFsdWUAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBT
+dHJpbmcAZ2V0X1B1YmxpY2F0aW9uRGF0ZU1vbnRoAFN5c3RlbS5Db21wb25lbnRNb2RlbABTQ180
+ZjNiYmQwM2E2MmM0OThiODI3ZmJhMGZhMjNiZTZlZS5kbGwAZ2V0X1B1YmxpY2F0aW9uRGF0ZU1v
+bnRoX0lzTnVsbABzZXRfUHVibGljYXRpb25EYXRlTW9udGhTdHJfSXNOdWxsAFNldE51bGwAc2V0
+X0l0ZW0AU3lzdGVtAHJlc291cmNlTWFuAE1vbnRoQXNzaWduAFNjcmlwdE1haW4AU3lzdGVtLkNv
+bmZpZ3VyYXRpb24AU3lzdGVtLkdsb2JhbGl6YXRpb24AU3lzdGVtLlJlZmxlY3Rpb24ASW52YWxp
+ZE9wZXJhdGlvbkV4Y2VwdGlvbgBTdHJpbmdDb21wYXJpc29uAG1vbnRoTm8AQ3VsdHVyZUluZm8A
+T3V0cHV0TmFtZU1hcABPdXRwdXRNYXAASW5wdXQwQnVmZmVyAFBpcGVsaW5lQnVmZmVyAFNjcmlw
+dEJ1ZmZlcgBnZXRfUmVzb3VyY2VNYW5hZ2VyAC5jdG9yAC5jY3RvcgBzZXRfUHVibGljYXRpb25E
+YXRlTW9udGhTdHIAU3lzdGVtLkRpYWdub3N0aWNzAFN5c3RlbS5SdW50aW1lLkNvbXBpbGVyU2Vy
+dmljZXMAU3lzdGVtLlJlc291cmNlcwBTQ180ZjNiYmQwM2E2MmM0OThiODI3ZmJhMGZhMjNiZTZl
+ZS5Qcm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMARGVidWdnaW5nTW9kZXMAU0NfNGYzYmJk
+MDNhNjJjNDk4YjgyN2ZiYTBmYTIzYmU2ZWUuUHJvcGVydGllcwBWYXJpYWJsZXMAQnVmZmVyQ29s
+dW1uSW5kZXhlcwBHZXRDb2x1bW5JbmRleGVzAFNldHRpbmdzAEVxdWFscwBDb25uZWN0aW9ucwBP
+YmplY3QARW5kT2ZSb3dzZXQAZ2V0X0RlZmF1bHQAVXNlckNvbXBvbmVudABQYXJlbnRDb21wb25l
+bnQAU2NyaXB0Q29tcG9uZW50AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuVHhTY3JpcHQATWljcm9zb2Z0
+LlNxbFNlcnZlci5QaXBlbGluZUhvc3QASW5wdXQwX1Byb2Nlc3NJbnB1dABJbnB1dDBfUHJvY2Vz
+c0lucHV0Um93AE5leHRSb3cAZ2V0X0Fzc2VtYmx5AAAAAA9KAGEAbgB1AGEAcgB5AAARRgBlAGIA
+cgB1AGEAcgB5AAALTQBhAHIAYwBoAAALQQBwAHIAaQBsAAAHTQBhAHkAAAlKAHUAbgBlAAAJSgB1
+AGwAeQAADUEAdQBnAHUAcwB0AAATUwBlAHAAdABlAG0AYgBlAHIAAA9PAGMAdABvAGIAZQByAAAR
+TgBvAHYAZQBtAGIAZQByAAARRABlAGMAZQBtAGIAZQByAACAm0kAcwBOAHUAbABsACAAcAByAG8A
+cABlAHIAdAB5ACAAYwBhAG4AbgBvAHQAIABiAGUAIABzAGUAdAAgAHQAbwAgAEYAYQBsAHMAZQAu
+ACAAQQBzAHMAaQBnAG4AIABhACAAdgBhAGwAdQBlACAAdABvACAAdABoAGUAIABjAG8AbAB1AG0A
+bgAgAGkAbgBzAHQAZQBhAGQALgAAD0kAbgBwAHUAdAAgADAAAHFTAEMAXwA0AGYAMwBiAGIAZAAw
+ADMAYQA2ADIAYwA0ADkAOABiADgAMgA3AGYAYgBhADAAZgBhADIAMwBiAGUANgBlAGUALgBQAHIA
+bwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIAYwBlAHMAABMxn3787C1Gv4EtODnOQNcABCAB
+AQgDIAABBSABARERBCABAQ4FIAEBEVkDBwEOCSADARI9HQgSQQMGEj0DBh0IBCABCAgEIAECCAUg
+AgEIHAMgAAIGIAICDhFxBSABHQgIBgABEnUReQQgABJ9BiACAQ4SfQi3elxWGTTgiQiJhF3NgIDM
+kQMGEhQDBhIYAwYSRQMGElEDBhJVAwYSIAUgAQESDAQgAQ4IAyAACAQgAQECCSAEAQgOEj0SQQUg
+AQESRQQAABJRBAAAElUFAAEBElUEAAASIAMAAAEDKAAIAygAAgMoAA4ECAASUQQIABJVBAgAEiAI
+AQAIAAAAAAAeAQABAFQCFldyYXBOb25FeGNlcHRpb25UaHJvd3MBCAEAAgAAAAAAKAEAI1NDXzRm
+M2JiZDAzYTYyYzQ5OGI4MjdmYmEwZmEyM2JlNmVlAAAFAQAAAAAWAQARQ29weXJpZ2h0IEAgIDIw
+MjIAAEkBABouTkVURnJhbWV3b3JrLFZlcnNpb249djQuNwEAVA4URnJhbWV3b3JrRGlzcGxheU5h
+bWUSLk5FVCBGcmFtZXdvcmsgNC43BAEAAAAAAAC0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNv
+dXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9
+bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2Vz
+LlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAAQDMAAAAAAAAAAAAAWjMA
+AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEwzAAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3Jl
+ZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAA
+SAAAAFhAAADsAwAAAAAAAAAAAADsAzQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAA
+AAAAvQTv/gAAAQAAAAEAAAAAAAAAAQAAAAAAPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQA
+AAABAFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBu
+AAAAAAAAALAETAMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAKAMAAAEAMAAwADAA
+MAAwADQAYgAwAAAAGgABAAEAQwBvAG0AbQBlAG4AdABzAAAAAAAAACIAAQABAEMAbwBtAHAAYQBu
+AHkATgBhAG0AZQAAAAAAAAAAAHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAA
+AABTAEMAXwA0AGYAMwBiAGIAZAAwADMAYQA2ADIAYwA0ADkAOABiADgAMgA3AGYAYgBhADAAZgBh
+ADIAMwBiAGUANgBlAGUAAAAwAAgAAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4A
+MAAuADAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAAAFMAQwBfADQAZgAzAGIAYgBk
+ADAAMwBhADYAMgBjADQAOQA4AGIAOAAyADcAZgBiAGEAMABmAGEAMgAzAGIAZQA2AGUAZQAuAGQA
+bABsAAAASAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAAeQByAGkAZwBo
+AHQAIABAACAAIAAyADAAMgAyAAAAKgABAAEATABlAGcAYQBsAFQAcgBhAGQAZQBtAGEAcgBrAHMA
+AAAAAAAAAAB4ACgAAQBPAHIAaQBnAGkAbgBhAGwARgBpAGwAZQBuAGEAbQBlAAAAUwBDAF8ANABm
+ADMAYgBiAGQAMAAzAGEANgAyAGMANAA5ADgAYgA4ADIANwBmAGIAYQAwAGYAYQAyADMAYgBlADYA
+ZQBlAC4AZABsAGwAAABoACQAAQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAQwBfADQAZgAz
+AGIAYgBkADAAMwBhADYAMgBjADQAOQA4AGIAOAAyADcAZgBiAGEAMABmAGEAMgAzAGIAZQA2AGUA
+ZQAAADQACAABAFAAcgBvAGQAdQBjAHQAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAA4
+AAgAAQBBAHMAcwBlAG0AYgBsAHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAAbDMAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                  name="VSTAProjectName"
+                  typeConverter="NOTBROWSABLE">SC_4f3bbd03a62c498b827fba0fa23be6ee</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the programming language used by the script."
+                  name="ScriptLanguage"
+                  typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read-only variables."
+                  name="ReadOnlyVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read/write variables."
+                  name="ReadWriteVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="List of breakpoints present on the script."
+                  isArray="true"
+                  name="BreakpointCollection"
+                  typeConverter="NOTBROWSABLE">
+                  <arrayElements
+                    arrayElementCount="0" />
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataChecksum140"
+                  typeConverter="NOTBROWSABLE">28</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Populating Song Table\Month conversion from int to str.Inputs[Input 0]"
+                  hasSideEffects="true"
+                  name="Input 0">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Month conversion from int to str.Inputs[Input 0].Columns[PublicationDateMonth]"
+                      cachedDataType="i4"
+                      cachedName="PublicationDateMonth"
+                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateMonth]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Populating Song Table\Month conversion from int to str.Outputs[Output 0]"
+                  name="Output 0"
+                  synchronousInputId="Package\Populating Song Table\Month conversion from int to str.Inputs[Input 0]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Month conversion from int to str.Outputs[Output 0].Columns[PublicationDateMonthStr]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Month conversion from int to str.Outputs[Output 0].Columns[PublicationDateMonthStr]"
+                      name="PublicationDateMonthStr" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Populating Song Table\OLE DB Destination"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
@@ -5387,6 +7517,28 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
                       cachedName="current"
                       externalMetadataColumnId="Package\Populating Song Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Current_Flag]"
                       lineageId="Package\Populating Song Table\Adding isCurrent Flag.Outputs[Derived Column Output].Columns[current]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PublicationDate ID]"
+                      cachedDataType="i4"
+                      cachedName="PublicationDate ID"
+                      externalMetadataColumnId="Package\Populating Song Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID_Publication_Date]"
+                      lineageId="Package\Populating Song Table\Retrieving PublicationDate ID.Outputs[Lookup Match Output].Columns[PublicationDate ID]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rankCategorystr]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="rankCategorystr"
+                      externalMetadataColumnId="Package\Populating Song Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rank_Category]"
+                      lineageId="Package\Populating Song Table\Conversion of int to str.Outputs[Output 0].Columns[rankCategorystr]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[streamsStr]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="streamsStr"
+                      externalMetadataColumnId="Package\Populating Song Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Streams]"
+                      lineageId="Package\Populating Song Table\Conversion of int to str.Outputs[Output 0].Columns[streamsStr]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -5493,7 +7645,7 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the Sort transformation removes rows with duplicate sort values."
-                  name="EliminateDuplicates">true</property>
+                  name="EliminateDuplicates">false</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the maximum number of threads to use for sorting."
@@ -5538,7 +7690,7 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
                         <property
                           dataType="System.Int32"
                           description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">0</property>
+                          name="NewSortKeyPosition">2</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -5568,12 +7720,13 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Populating Song Table\Removing duplicates and sort by S_ID.Outputs[Sort Output].Columns[Convert from unicode.rankCategorycsv]"
+                      refId="Package\Populating Song Table\Removing duplicates and sort by S_ID.Outputs[Sort Output].Columns[rankCategorycsv]"
                       codePage="1250"
                       dataType="str"
                       length="100"
-                      lineageId="Package\Populating Song Table\Removing duplicates and sort by S_ID.Outputs[Sort Output].Columns[Convert from unicode.rankCategorycsv]"
-                      name="Convert from unicode.rankCategorycsv">
+                      lineageId="Package\Populating Song Table\Removing duplicates and sort by S_ID.Outputs[Sort Output].Columns[rankCategorycsv]"
+                      name="rankCategorycsv"
+                      sortKeyPosition="2">
                       <properties>
                         <property
                           containsID="true"
@@ -5582,6 +7735,198 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
                           name="SortColumnId">#{Package\Populating Song Table\Convert from unicode.Outputs[Data Conversion Output].Columns[rankCategorycsv]}</property>
                       </properties>
                     </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Populating Song Table\Retrieving PublicationDate ID"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Retrieving PublicationDate ID"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[DateDimension]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[DateDimension]) [refTable]
+where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Days" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Months" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Years" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateDay]};#{Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateYear]};#{Package\Populating Song Table\Month conversion from int to str.Outputs[Output 0].Columns[PublicationDateMonthStr]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Populating Song Table\Retrieving PublicationDate ID.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.SpotifyDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.SpotifyDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Populating Song Table\Retrieving PublicationDate ID.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Retrieving PublicationDate ID.Inputs[Lookup Input].Columns[PublicationDateYear]"
+                      cachedDataType="i4"
+                      cachedName="PublicationDateYear"
+                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateYear]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Years</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Retrieving PublicationDate ID.Inputs[Lookup Input].Columns[PublicationDateMonthStr]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="PublicationDateMonthStr"
+                      lineageId="Package\Populating Song Table\Month conversion from int to str.Outputs[Output 0].Columns[PublicationDateMonthStr]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Months</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Retrieving PublicationDate ID.Inputs[Lookup Input].Columns[PublicationDateDay]"
+                      cachedDataType="i4"
+                      cachedName="PublicationDateDay"
+                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateDay]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Days</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Populating Song Table\Retrieving PublicationDate ID.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Populating Song Table\Retrieving PublicationDate ID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Retrieving PublicationDate ID.Outputs[Lookup Match Output].Columns[PublicationDate ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Populating Song Table\Retrieving PublicationDate ID.Outputs[Lookup Match Output].Columns[PublicationDate ID]"
+                      name="PublicationDate ID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Populating Song Table\Retrieving PublicationDate ID.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Populating Song Table\Retrieving PublicationDate ID.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Populating Song Table\Retrieving PublicationDate ID.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Populating Song Table\Retrieving PublicationDate ID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Retrieving PublicationDate ID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Retrieving PublicationDate ID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Retrieving PublicationDate ID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Retrieving PublicationDate ID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -6971,12 +9316,22 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
               name="Derived Column Output"
               startId="Package\Populating Song Table\Adding isCurrent Flag.Outputs[Derived Column Output]" />
             <path
+              refId="Package\Populating Song Table.Paths[Derived Column Output1]"
+              endId="Package\Populating Song Table\Month conversion from int to str.Inputs[Input 0]"
+              name="Derived Column Output"
+              startId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
               refId="Package\Populating Song Table.Paths[Flat File Source Output]"
               endId="Package\Populating Song Table\Convert from unicode.Inputs[Data Conversion Input]"
               name="Flat File Source Output"
               startId="Package\Populating Song Table\Songs CSV.Outputs[Flat File Source Output]" />
             <path
               refId="Package\Populating Song Table.Paths[Lookup Match Output]"
+              endId="Package\Populating Song Table\Conversion of int to str.Inputs[Input 0]"
+              name="Lookup Match Output"
+              startId="Package\Populating Song Table\Retrieving PublicationDate ID.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Populating Song Table.Paths[Lookup Match Output1]"
               endId="Package\Populating Song Table\Sort by S_ID.Inputs[Sort Input]"
               name="Lookup Match Output"
               startId="Package\Populating Song Table\Lookup 1.Outputs[Lookup Match Output]" />
@@ -6986,15 +9341,15 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
               name="Lookup No Match Output"
               startId="Package\Populating Song Table\Lookup.Outputs[Lookup No Match Output]" />
             <path
+              refId="Package\Populating Song Table.Paths[Merge Join Output1]"
+              endId="Package\Populating Song Table\Derived Column 1.Inputs[Derived Column Input]"
+              name="Merge Join Output"
+              startId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output]" />
+            <path
               refId="Package\Populating Song Table.Paths[Merge Join Output]"
               endId="Package\Populating Song Table\Lookup 1.Inputs[Lookup Input]"
               name="Merge Join Output"
               startId="Package\Populating Song Table\Merge Join 1.Outputs[Merge Join Output]" />
-            <path
-              refId="Package\Populating Song Table.Paths[Merge Join Output1]"
-              endId="Package\Populating Song Table\Lookup.Inputs[Lookup Input]"
-              name="Merge Join Output"
-              startId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output]" />
             <path
               refId="Package\Populating Song Table.Paths[OLE DB Source Output]"
               endId="Package\Populating Song Table\Sort by LabelID 1.Inputs[Sort Input]"
@@ -7006,6 +9361,16 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
               name="OLE DB Source Output"
               startId="Package\Populating Song Table\Song (SpotifyDB).Outputs[OLE DB Source Output]" />
             <path
+              refId="Package\Populating Song Table.Paths[Output 01]"
+              endId="Package\Populating Song Table\Lookup.Inputs[Lookup Input]"
+              name="Output 0"
+              startId="Package\Populating Song Table\Conversion of int to str.Outputs[Output 0]" />
+            <path
+              refId="Package\Populating Song Table.Paths[Output 0]"
+              endId="Package\Populating Song Table\Retrieving PublicationDate ID.Inputs[Lookup Input]"
+              name="Output 0"
+              startId="Package\Populating Song Table\Month conversion from int to str.Outputs[Output 0]" />
+            <path
               refId="Package\Populating Song Table.Paths[Sort Output]"
               endId="Package\Populating Song Table\Merge Join 1.Inputs[Merge Join Left Input]"
               name="Sort Output"
@@ -7016,15 +9381,15 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
               name="Sort Output"
               startId="Package\Populating Song Table\Sort by LabelID.Outputs[Sort Output]" />
             <path
-              refId="Package\Populating Song Table.Paths[Sort Output2]"
-              endId="Package\Populating Song Table\Merge Join.Inputs[Merge Join Left Input]"
-              name="Sort Output"
-              startId="Package\Populating Song Table\Removing duplicates and sort by S_ID.Outputs[Sort Output]" />
-            <path
               refId="Package\Populating Song Table.Paths[Sort Output3]"
               endId="Package\Populating Song Table\Merge Join.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\Populating Song Table\Sort by S_ID.Outputs[Sort Output]" />
+            <path
+              refId="Package\Populating Song Table.Paths[Sort Output2]"
+              endId="Package\Populating Song Table\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Populating Song Table\Removing duplicates and sort by S_ID.Outputs[Sort Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -7435,57 +9800,59 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
     design-time-name="Package\Populating Song Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="161,42"
           Id="Package\Populating Song Table\Sort by LabelID 1"
           TopLeft="570,112" />
         <NodeLayout
+          Size="152,42"
+          Id="Package\Populating Song Table\Sort by LabelID"
+          TopLeft="780,112" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Populating Song Table\OLE DB Destination"
+          TopLeft="95,1299" />
+        <NodeLayout
           Size="158,42"
           Id="Package\Populating Song Table\Label(SpotifyDB)"
           TopLeft="547,0" />
         <NodeLayout
+          Size="259,42"
+          Id="Package\Populating Song Table\Removing duplicates and sort by S_ID"
+          TopLeft="108,407" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Populating Song Table\Sort by S_ID"
+          TopLeft="690,402" />
+        <NodeLayout
+          Size="122,42"
+          Id="Package\Populating Song Table\Lookup 1"
+          TopLeft="701,300" />
+        <NodeLayout
           Size="151,42"
           Id="Package\Populating Song Table\Songs CSV"
           TopLeft="159.5,219.5" />
-        <EdgeLayout
-          Id="Package\Populating Song Table.Paths[OLE DB Source Output]"
-          TopLeft="626,42">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="24.5,70"
-              Start="0,0"
-              End="24.5,62.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31"
-                    Point2="0,35"
-                    Point3="4,35" />
-                  <mssgle:LineSegment
-                    End="20.5,35" />
-                  <mssgle:CubicBezierSegment
-                    Point1="20.5,35"
-                    Point2="24.5,35"
-                    Point3="24.5,39" />
-                  <mssgle:LineSegment
-                    End="24.5,62.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="156,42"
           Id="Package\Populating Song Table\Convert from unicode"
           TopLeft="153,317" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Populating Song Table\Merge Join"
+          TopLeft="438,519" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Populating Song Table\Song (SpotifyDB)"
+          TopLeft="787,0" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Populating Song Table\Merge Join 1"
+          TopLeft="692,215" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Populating Song Table\Adding isCurrent Flag"
+          TopLeft="162,1198" />
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[Flat File Source Output]"
           TopLeft="233,261.5">
@@ -7508,10 +9875,40 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="259,42"
-          Id="Package\Populating Song Table\Removing duplicates and sort by S_ID"
-          TopLeft="108,407" />
+        <EdgeLayout
+          Id="Package\Populating Song Table.Paths[Derived Column Output]"
+          TopLeft="252,1240">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-71.5,59"
+              Start="0,0"
+              End="-71.5,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.5"
+                    Point2="0,29.5"
+                    Point3="-4,29.5" />
+                  <mssgle:LineSegment
+                    End="-67.5,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-67.5,29.5"
+                    Point2="-71.5,29.5"
+                    Point3="-71.5,33.5" />
+                  <mssgle:LineSegment
+                    End="-71.5,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[Data Conversion Output]"
           TopLeft="234.25,359">
@@ -7534,28 +9931,32 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="150,42"
-          Id="Package\Populating Song Table\Song (SpotifyDB)"
-          TopLeft="787,0" />
-        <NodeLayout
-          Size="152,42"
-          Id="Package\Populating Song Table\Sort by LabelID"
-          TopLeft="780,112" />
         <EdgeLayout
-          Id="Package\Populating Song Table.Paths[OLE DB Source Output1]"
-          TopLeft="859,42">
+          Id="Package\Populating Song Table.Paths[Sort Output3]"
+          TopLeft="759.5,444">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,70"
+              EndConnector="-236.166666666667,75"
               Start="0,0"
-              End="0,62.5">
+              End="-236.166666666667,67.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,62.5" />
+                    End="0,40.4528875379939" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.4528875379939"
+                    Point2="0,44.4528875379939"
+                    Point3="-4,44.4528875379939" />
+                  <mssgle:LineSegment
+                    End="-232.166666666667,44.4528875379939" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-232.166666666667,44.4528875379939"
+                    Point2="-236.166666666667,44.4528875379939"
+                    Point3="-236.166666666667,48.4528875379939" />
+                  <mssgle:LineSegment
+                    End="-236.166666666667,67.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7564,36 +9965,32 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="139,42"
-          Id="Package\Populating Song Table\Merge Join 1"
-          TopLeft="692,215" />
         <EdgeLayout
-          Id="Package\Populating Song Table.Paths[Sort Output]"
-          TopLeft="650.5,154">
+          Id="Package\Populating Song Table.Paths[Sort Output2]"
+          TopLeft="237.5,449">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="111,61"
+              EndConnector="245.166666666667,70"
               Start="0,0"
-              End="111,53.5">
+              End="245.166666666667,62.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.5" />
+                    End="0,37.4893617021277" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26.5"
-                    Point2="0,30.5"
-                    Point3="4,30.5" />
+                    Point1="0,37.4893617021277"
+                    Point2="0,41.4893617021277"
+                    Point3="4,41.4893617021277" />
                   <mssgle:LineSegment
-                    End="107,30.5" />
+                    End="241.166666666667,41.4893617021277" />
                   <mssgle:CubicBezierSegment
-                    Point1="107,30.5"
-                    Point2="111,30.5"
-                    Point3="111,34.5" />
+                    Point1="241.166666666667,41.4893617021277"
+                    Point2="245.166666666667,41.4893617021277"
+                    Point3="245.166666666667,45.4893617021277" />
                   <mssgle:LineSegment
-                    End="111,53.5" />
+                    End="245.166666666667,62.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7636,24 +10033,32 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="122,42"
-          Id="Package\Populating Song Table\Lookup 1"
-          TopLeft="698,303" />
         <EdgeLayout
-          Id="Package\Populating Song Table.Paths[Merge Join Output]"
-          TopLeft="760.25,257">
+          Id="Package\Populating Song Table.Paths[Sort Output]"
+          TopLeft="650.5,154">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,46"
+              EndConnector="111,61"
               Start="0,0"
-              End="0,38.5">
+              End="111,53.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.5" />
+                    End="0,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.5"
+                    Point2="0,30.5"
+                    Point3="4,30.5" />
+                  <mssgle:LineSegment
+                    End="107,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="107,30.5"
+                    Point2="111,30.5"
+                    Point3="111,34.5" />
+                  <mssgle:LineSegment
+                    End="111,53.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7662,47 +10067,37 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="139,42"
-          Id="Package\Populating Song Table\Sort by S_ID"
-          TopLeft="689,406" />
         <EdgeLayout
-          Id="Package\Populating Song Table.Paths[Lookup Match Output]"
-          TopLeft="758.75,345">
+          Id="Package\Populating Song Table.Paths[OLE DB Source Output1]"
+          TopLeft="859,42">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,61"
+              EndConnector="0,70"
               Start="0,0"
-              End="0,53.5">
+              End="0,62.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,53.5" />
+                    End="0,62.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="130,42"
-          Id="Package\Populating Song Table\Merge Join"
-          TopLeft="438,519" />
         <EdgeLayout
-          Id="Package\Populating Song Table.Paths[Sort Output2]"
-          TopLeft="237.5,449">
+          Id="Package\Populating Song Table.Paths[OLE DB Source Output]"
+          TopLeft="626,42">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="265.5,70"
+              EndConnector="24.5,70"
               Start="0,0"
-              End="265.5,62.5">
+              End="24.5,62.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -7713,13 +10108,13 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
                     Point2="0,35"
                     Point3="4,35" />
                   <mssgle:LineSegment
-                    End="261.5,35" />
+                    End="20.5,35" />
                   <mssgle:CubicBezierSegment
-                    Point1="261.5,35"
-                    Point2="265.5,35"
-                    Point3="265.5,39" />
+                    Point1="20.5,35"
+                    Point2="24.5,35"
+                    Point3="24.5,39" />
                   <mssgle:LineSegment
-                    End="265.5,62.5" />
+                    End="24.5,62.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7729,31 +10124,109 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Populating Song Table.Paths[Sort Output3]"
-          TopLeft="758.5,448">
+          Id="Package\Populating Song Table.Paths[Merge Join Output]"
+          TopLeft="761.75,257">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-235.166666666667,71"
+              EndConnector="0,43"
               Start="0,0"
-              End="-235.166666666667,63.5">
+              End="0,35.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.0820668693009" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,38.0820668693009"
-                    Point2="0,42.0820668693009"
-                    Point3="-4,42.0820668693009" />
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Populating Song Table\Derived Column 1"
+          TopLeft="413,612" />
+        <EdgeLayout
+          Id="Package\Populating Song Table.Paths[Merge Join Output1]"
+          TopLeft="503,561">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8.5,51"
+              Start="0,0"
+              End="-8.5,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-231.166666666667,42.0820668693009" />
+                    End="0,21.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-231.166666666667,42.0820668693009"
-                    Point2="-235.166666666667,42.0820668693009"
-                    Point3="-235.166666666667,46.0820668693009" />
+                    Point1="0,21.5"
+                    Point2="0,25.5"
+                    Point3="-4,25.5" />
                   <mssgle:LineSegment
-                    End="-235.166666666667,63.5" />
+                    End="-4.5,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4.5,25.5"
+                    Point2="-8.5,25.5"
+                    Point3="-8.5,29.5" />
+                  <mssgle:LineSegment
+                    End="-8.5,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="231,42"
+          Id="Package\Populating Song Table\Month conversion from int to str"
+          TopLeft="375,704" />
+        <EdgeLayout
+          Id="Package\Populating Song Table.Paths[Derived Column Output1]"
+          TopLeft="492.5,654">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50"
+              Start="0,0"
+              End="0,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="217,42"
+          Id="Package\Populating Song Table\Retrieving PublicationDate ID"
+          TopLeft="379,803" />
+        <EdgeLayout
+          Id="Package\Populating Song Table.Paths[Output 0]"
+          TopLeft="489,746">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57"
+              Start="0,0"
+              End="0,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7765,99 +10238,85 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
         <NodeLayout
           Size="113,42"
           Id="Package\Populating Song Table\Lookup"
-          TopLeft="447,642" />
-        <EdgeLayout
-          Id="Package\Populating Song Table.Paths[Merge Join Output1]"
-          TopLeft="503.25,561">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,81"
-              Start="0,0"
-              End="0,73.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,73.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="180,42"
-          Id="Package\Populating Song Table\Adding isCurrent Flag"
-          TopLeft="178,782" />
+          TopLeft="431,1045" />
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[Lookup No Match Output]"
-          TopLeft="503.5,684">
+          TopLeft="487.5,1087">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-235.5,98"
+              EndConnector="-235.5,111"
               Start="0,0"
-              End="-235.5,90.5">
+              End="-235.5,103.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,45" />
+                    End="0,51.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,45"
-                    Point2="0,49"
-                    Point3="-4,49" />
+                    Point1="0,51.5"
+                    Point2="0,55.5"
+                    Point3="-4,55.5" />
                   <mssgle:LineSegment
-                    End="-231.5,49" />
+                    End="-231.5,55.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-231.5,49"
-                    Point2="-235.5,49"
-                    Point3="-235.5,53" />
+                    Point1="-231.5,55.5"
+                    Point2="-235.5,55.5"
+                    Point3="-235.5,59.5" />
                   <mssgle:LineSegment
-                    End="-235.5,90.5" />
+                    End="-235.5,103.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-173.55638671875,54,111.6127734375,11.609375"
+              BoundingBox="-173.55638671875,60.5,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="171,42"
-          Id="Package\Populating Song Table\OLE DB Destination"
-          TopLeft="111,883" />
+          Size="172,42"
+          Id="Package\Populating Song Table\Conversion of int to str"
+          TopLeft="407,918" />
         <EdgeLayout
-          Id="Package\Populating Song Table.Paths[Derived Column Output]"
-          TopLeft="268,824">
+          Id="Package\Populating Song Table.Paths[Lookup Match Output]"
+          TopLeft="490.25,845">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-71.5,59"
+              EndConnector="0,73"
               Start="0,0"
-              End="-71.5,51.5">
+              End="0,65.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.5"
-                    Point2="0,29.5"
-                    Point3="-4,29.5" />
+                    End="0,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,26.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Populating Song Table.Paths[Output 01]"
+          TopLeft="490.25,960">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,85"
+              Start="0,0"
+              End="0,77.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-67.5,29.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-67.5,29.5"
-                    Point2="-71.5,29.5"
-                    Point3="-71.5,33.5" />
-                  <mssgle:LineSegment
-                    End="-71.5,51.5" />
+                    End="0,77.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7866,11 +10325,35 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Populating Song Table.Paths[Lookup Match Output1]"
+          TopLeft="760.75,342">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Populating Song Table\Label(SpotifyDB)">
+    design-time-name="Package\Populating Song Table\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7883,7 +10366,7 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Populating Song Table\Song (SpotifyDB)">
+    design-time-name="Package\Populating Song Table\Label(SpotifyDB)">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7901,12 +10384,48 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
           type="q3:string">[dbo].[MusicLabel]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Populating Song Table\Song (SpotifyDB)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Populating Song Table\Retrieving PublicationDate ID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DateDimension]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -7938,19 +10457,6 @@ where [refTable].[Label_Name] = ? and [refTable].[Main_Genre] = ?</property>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Populating Song Table\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
