@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="133"
-  DTS:VersionGUID="{2DBA4D4F-0DC6-4EF4-BBED-B534A98E6DFC}">
+  DTS:VersionBuild="135"
+  DTS:VersionGUID="{2A17ED0D-8E14-485F-8DDC-6C2D6939FEF5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -10829,6 +10829,1747 @@ where [refTable].[S_ID] = ?</property>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Populating User Table"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{9B35CBC7-5181-4AF7-A662-48551F9B9E14}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Populating User Table"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Populating User Table\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[Song]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[Song]) [refTable]
+where [refTable].[S_ID] = ? and [refTable].[Song_Name] = ? and [refTable].[Artist] = ? and [refTable].[Writer] = ? and [refTable].[Producer] = ? and [refTable].[Genre] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Song_ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="S_ID" dataType="DT_STR" length="11" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="LabelID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Song_Name" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="ID_Publication_Date" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Artist" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Writer" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Producer" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Genre" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Streams" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Rank_Category" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Current_Flag" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[S_ID]};#{Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[SongName]};#{Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[Artist]};#{Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[Writer]};#{Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[Producer]};#{Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[Genre]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Populating User Table\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.SpotifyDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.SpotifyDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Populating User Table\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Populating User Table\Lookup.Inputs[Lookup Input].Columns[S_ID]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="11"
+                      cachedName="S_ID"
+                      lineageId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[S_ID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">S_ID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating User Table\Lookup.Inputs[Lookup Input].Columns[SongName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="SongName"
+                      lineageId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[SongName]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Song_Name</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating User Table\Lookup.Inputs[Lookup Input].Columns[Artist]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Artist"
+                      lineageId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[Artist]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Artist</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating User Table\Lookup.Inputs[Lookup Input].Columns[Writer]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Writer"
+                      lineageId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[Writer]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Writer</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating User Table\Lookup.Inputs[Lookup Input].Columns[Producer]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Producer"
+                      lineageId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[Producer]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Producer</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating User Table\Lookup.Inputs[Lookup Input].Columns[Genre]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Genre"
+                      lineageId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[Genre]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Genre</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Populating User Table\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Populating User Table\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating User Table\Lookup.Outputs[Lookup Match Output].Columns[Song_ID DW]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Populating User Table\Lookup.Outputs[Lookup Match Output].Columns[Song_ID DW]"
+                      name="Song_ID DW"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Song_ID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Populating User Table\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Populating User Table\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Populating User Table\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Populating User Table\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating User Table\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Populating User Table\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Populating User Table\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Populating User Table\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Populating User Table\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Populating User Table\Merge Join.Inputs[Merge Join Left Input].Columns[SongID]"
+                      cachedDataType="i4"
+                      cachedName="SongID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Populating User Table\Sort by SongID.Outputs[Sort Output].Columns[SongID]" />
+                    <inputColumn
+                      refId="Package\Populating User Table\Merge Join.Inputs[Merge Join Left Input].Columns[Username]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Username"
+                      lineageId="Package\Populating User Table\Sort by SongID.Outputs[Sort Output].Columns[Username]" />
+                    <inputColumn
+                      refId="Package\Populating User Table\Merge Join.Inputs[Merge Join Left Input].Columns[email]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="email"
+                      lineageId="Package\Populating User Table\Sort by SongID.Outputs[Sort Output].Columns[email]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Populating User Table\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Populating User Table\Merge Join.Inputs[Merge Join Right Input].Columns[SongID]"
+                      cachedDataType="i4"
+                      cachedName="SongID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[SongID]" />
+                    <inputColumn
+                      refId="Package\Populating User Table\Merge Join.Inputs[Merge Join Right Input].Columns[S_ID]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="11"
+                      cachedName="S_ID"
+                      lineageId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[S_ID]" />
+                    <inputColumn
+                      refId="Package\Populating User Table\Merge Join.Inputs[Merge Join Right Input].Columns[SongName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="SongName"
+                      lineageId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[SongName]" />
+                    <inputColumn
+                      refId="Package\Populating User Table\Merge Join.Inputs[Merge Join Right Input].Columns[Artist]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Artist"
+                      lineageId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[Artist]" />
+                    <inputColumn
+                      refId="Package\Populating User Table\Merge Join.Inputs[Merge Join Right Input].Columns[Writer]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Writer"
+                      lineageId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[Writer]" />
+                    <inputColumn
+                      refId="Package\Populating User Table\Merge Join.Inputs[Merge Join Right Input].Columns[Producer]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Producer"
+                      lineageId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[Producer]" />
+                    <inputColumn
+                      refId="Package\Populating User Table\Merge Join.Inputs[Merge Join Right Input].Columns[Genre]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Genre"
+                      lineageId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[Genre]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[Username]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[Username]"
+                      name="Username">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating User Table\Merge Join.Inputs[Merge Join Left Input].Columns[Username]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[email]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[email]"
+                      name="email">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating User Table\Merge Join.Inputs[Merge Join Left Input].Columns[email]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[SongID]"
+                      dataType="i4"
+                      lineageId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[SongID]"
+                      name="SongID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating User Table\Merge Join.Inputs[Merge Join Right Input].Columns[SongID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[S_ID]"
+                      codePage="1250"
+                      dataType="str"
+                      length="11"
+                      lineageId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[S_ID]"
+                      name="S_ID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating User Table\Merge Join.Inputs[Merge Join Right Input].Columns[S_ID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[SongName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[SongName]"
+                      name="SongName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating User Table\Merge Join.Inputs[Merge Join Right Input].Columns[SongName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[Artist]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[Artist]"
+                      name="Artist">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating User Table\Merge Join.Inputs[Merge Join Right Input].Columns[Artist]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[Writer]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[Writer]"
+                      name="Writer">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating User Table\Merge Join.Inputs[Merge Join Right Input].Columns[Writer]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[Producer]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[Producer]"
+                      name="Producer">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating User Table\Merge Join.Inputs[Merge Join Right Input].Columns[Producer]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[Genre]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[Genre]"
+                      name="Genre">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Populating User Table\Merge Join.Inputs[Merge Join Right Input].Columns[Genre]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Populating User Table\Song(SpotifyDB)"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Song(SpotifyDB)"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Song]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Populating User Table\Song(SpotifyDB).Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.SpotifyDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.SpotifyDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[SongID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[SongID]"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[SongID]"
+                      name="SongID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[S_ID]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[S_ID]"
+                      length="11"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[S_ID]"
+                      name="S_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[LabelID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[LabelID]"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[LabelID]"
+                      name="LabelID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[SongName]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[SongName]"
+                      length="100"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[SongName]"
+                      name="SongName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[PublicationDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[PublicationDate]"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[PublicationDate]"
+                      name="PublicationDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[Artist]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[Artist]"
+                      length="100"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[Artist]"
+                      name="Artist"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[Writer]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[Writer]"
+                      length="100"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[Writer]"
+                      name="Writer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[Producer]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[Producer]"
+                      length="100"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[Producer]"
+                      name="Producer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[Genre]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[Genre]"
+                      length="100"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[Genre]"
+                      name="Genre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[DurationOfSong]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[DurationOfSong]"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[DurationOfSong]"
+                      name="DurationOfSong"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[streams]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[streams]"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[streams]"
+                      name="streams"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[SongID]"
+                      dataType="i4"
+                      name="SongID" />
+                    <externalMetadataColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[S_ID]"
+                      codePage="1250"
+                      dataType="str"
+                      length="11"
+                      name="S_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[LabelID]"
+                      dataType="i4"
+                      name="LabelID" />
+                    <externalMetadataColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[SongName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      name="SongName" />
+                    <externalMetadataColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[PublicationDate]"
+                      dataType="dbTimeStamp"
+                      name="PublicationDate" />
+                    <externalMetadataColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[Artist]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      name="Artist" />
+                    <externalMetadataColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[Writer]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      name="Writer" />
+                    <externalMetadataColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[Producer]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      name="Producer" />
+                    <externalMetadataColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[Genre]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      name="Genre" />
+                    <externalMetadataColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[DurationOfSong]"
+                      dataType="r8"
+                      name="DurationOfSong" />
+                    <externalMetadataColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[streams]"
+                      dataType="i4"
+                      name="streams" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[SongID]"
+                      dataType="i4"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[SongID]"
+                      name="SongID" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[S_ID]"
+                      codePage="1250"
+                      dataType="str"
+                      length="11"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[S_ID]"
+                      name="S_ID" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[LabelID]"
+                      dataType="i4"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[LabelID]"
+                      name="LabelID" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[SongName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[SongName]"
+                      name="SongName" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[PublicationDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[PublicationDate]"
+                      name="PublicationDate" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[Artist]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[Artist]"
+                      name="Artist" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[Writer]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[Writer]"
+                      name="Writer" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[Producer]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[Producer]"
+                      name="Producer" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[Genre]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[Genre]"
+                      name="Genre" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[DurationOfSong]"
+                      dataType="r8"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[DurationOfSong]"
+                      name="DurationOfSong" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[streams]"
+                      dataType="i4"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[streams]"
+                      name="streams" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Populating User Table\Sort by SongID"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort by SongID"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Populating User Table\Sort by SongID.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Populating User Table\Sort by SongID.Inputs[Sort Input].Columns[UserID]"
+                      cachedDataType="i4"
+                      cachedName="UserID"
+                      lineageId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].Columns[UserID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating User Table\Sort by SongID.Inputs[Sort Input].Columns[Username]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Username"
+                      lineageId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].Columns[Username]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating User Table\Sort by SongID.Inputs[Sort Input].Columns[email]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="email"
+                      lineageId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].Columns[email]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating User Table\Sort by SongID.Inputs[Sort Input].Columns[SongID]"
+                      cachedDataType="i4"
+                      cachedName="SongID"
+                      lineageId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].Columns[SongID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Populating User Table\Sort by SongID.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating User Table\Sort by SongID.Outputs[Sort Output].Columns[UserID]"
+                      dataType="i4"
+                      lineageId="Package\Populating User Table\Sort by SongID.Outputs[Sort Output].Columns[UserID]"
+                      name="UserID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].Columns[UserID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating User Table\Sort by SongID.Outputs[Sort Output].Columns[Username]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating User Table\Sort by SongID.Outputs[Sort Output].Columns[Username]"
+                      name="Username">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].Columns[Username]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating User Table\Sort by SongID.Outputs[Sort Output].Columns[email]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating User Table\Sort by SongID.Outputs[Sort Output].Columns[email]"
+                      name="email">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].Columns[email]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating User Table\Sort by SongID.Outputs[Sort Output].Columns[SongID]"
+                      dataType="i4"
+                      lineageId="Package\Populating User Table\Sort by SongID.Outputs[Sort Output].Columns[SongID]"
+                      name="SongID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].Columns[SongID]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Populating User Table\Sort by SongID 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort by SongID 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Populating User Table\Sort by SongID 1.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Populating User Table\Sort by SongID 1.Inputs[Sort Input].Columns[SongID]"
+                      cachedDataType="i4"
+                      cachedName="SongID"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[SongID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating User Table\Sort by SongID 1.Inputs[Sort Input].Columns[S_ID]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="11"
+                      cachedName="S_ID"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[S_ID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating User Table\Sort by SongID 1.Inputs[Sort Input].Columns[LabelID]"
+                      cachedDataType="i4"
+                      cachedName="LabelID"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[LabelID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating User Table\Sort by SongID 1.Inputs[Sort Input].Columns[SongName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="SongName"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[SongName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating User Table\Sort by SongID 1.Inputs[Sort Input].Columns[PublicationDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="PublicationDate"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[PublicationDate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating User Table\Sort by SongID 1.Inputs[Sort Input].Columns[Artist]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Artist"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[Artist]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating User Table\Sort by SongID 1.Inputs[Sort Input].Columns[Writer]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Writer"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[Writer]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating User Table\Sort by SongID 1.Inputs[Sort Input].Columns[Producer]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Producer"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[Producer]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating User Table\Sort by SongID 1.Inputs[Sort Input].Columns[Genre]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Genre"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[Genre]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating User Table\Sort by SongID 1.Inputs[Sort Input].Columns[DurationOfSong]"
+                      cachedDataType="r8"
+                      cachedName="DurationOfSong"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[DurationOfSong]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Populating User Table\Sort by SongID 1.Inputs[Sort Input].Columns[streams]"
+                      cachedDataType="i4"
+                      cachedName="streams"
+                      lineageId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[streams]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[SongID]"
+                      dataType="i4"
+                      lineageId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[SongID]"
+                      name="SongID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[SongID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[S_ID]"
+                      codePage="1250"
+                      dataType="str"
+                      length="11"
+                      lineageId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[S_ID]"
+                      name="S_ID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[S_ID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[LabelID]"
+                      dataType="i4"
+                      lineageId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[LabelID]"
+                      name="LabelID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[LabelID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[SongName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[SongName]"
+                      name="SongName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[SongName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[PublicationDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[PublicationDate]"
+                      name="PublicationDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[PublicationDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[Artist]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[Artist]"
+                      name="Artist">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[Artist]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[Writer]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[Writer]"
+                      name="Writer">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[Writer]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[Producer]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[Producer]"
+                      name="Producer">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[Producer]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[Genre]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[Genre]"
+                      name="Genre">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[Genre]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[DurationOfSong]"
+                      dataType="r8"
+                      lineageId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[DurationOfSong]"
+                      name="DurationOfSong">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[DurationOfSong]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[streams]"
+                      dataType="i4"
+                      lineageId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output].Columns[streams]"
+                      name="streams">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output].Columns[streams]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Populating User Table\User(SpotifyDB)"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="User(SpotifyDB)"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[SpotifyUser]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Populating User Table\User(SpotifyDB).Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.SpotifyDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.SpotifyDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].Columns[UserID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[UserID]"
+                      lineageId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].Columns[UserID]"
+                      name="UserID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].Columns[Username]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[Username]"
+                      length="100"
+                      lineageId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].Columns[Username]"
+                      name="Username"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].Columns[email]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[email]"
+                      length="100"
+                      lineageId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].Columns[email]"
+                      name="email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].Columns[SongID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[SongID]"
+                      lineageId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].Columns[SongID]"
+                      name="SongID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[UserID]"
+                      dataType="i4"
+                      name="UserID" />
+                    <externalMetadataColumn
+                      refId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[Username]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      name="Username" />
+                    <externalMetadataColumn
+                      refId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[email]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      name="email" />
+                    <externalMetadataColumn
+                      refId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output].ExternalColumns[SongID]"
+                      dataType="i4"
+                      name="SongID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[UserID]"
+                      dataType="i4"
+                      lineageId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[UserID]"
+                      name="UserID" />
+                    <outputColumn
+                      refId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[Username]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[Username]"
+                      name="Username" />
+                    <outputColumn
+                      refId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[email]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[email]"
+                      name="email" />
+                    <outputColumn
+                      refId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[SongID]"
+                      dataType="i4"
+                      lineageId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[SongID]"
+                      name="SongID" />
+                    <outputColumn
+                      refId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Populating User Table\User(SpotifyDW)"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="User(SpotifyDW)"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[SpotifyUser]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Populating User Table\User(SpotifyDW).Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.SpotifyDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.SpotifyDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Populating User Table\User(SpotifyDW).Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Populating User Table\User(SpotifyDW).Inputs[OLE DB Destination Input].Columns[Username]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Username"
+                      externalMetadataColumnId="Package\Populating User Table\User(SpotifyDW).Inputs[OLE DB Destination Input].ExternalColumns[Username]"
+                      lineageId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[Username]" />
+                    <inputColumn
+                      refId="Package\Populating User Table\User(SpotifyDW).Inputs[OLE DB Destination Input].Columns[email]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="email"
+                      externalMetadataColumnId="Package\Populating User Table\User(SpotifyDW).Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                      lineageId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output].Columns[email]" />
+                    <inputColumn
+                      refId="Package\Populating User Table\User(SpotifyDW).Inputs[OLE DB Destination Input].Columns[Song_ID DW]"
+                      cachedDataType="i4"
+                      cachedName="Song_ID DW"
+                      externalMetadataColumnId="Package\Populating User Table\User(SpotifyDW).Inputs[OLE DB Destination Input].ExternalColumns[Favourite_Song_ID]"
+                      lineageId="Package\Populating User Table\Lookup.Outputs[Lookup Match Output].Columns[Song_ID DW]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Populating User Table\User(SpotifyDW).Inputs[OLE DB Destination Input].ExternalColumns[UserID]"
+                      dataType="i4"
+                      name="UserID" />
+                    <externalMetadataColumn
+                      refId="Package\Populating User Table\User(SpotifyDW).Inputs[OLE DB Destination Input].ExternalColumns[Username]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      name="Username" />
+                    <externalMetadataColumn
+                      refId="Package\Populating User Table\User(SpotifyDW).Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                      codePage="1250"
+                      dataType="str"
+                      length="100"
+                      name="email" />
+                    <externalMetadataColumn
+                      refId="Package\Populating User Table\User(SpotifyDW).Inputs[OLE DB Destination Input].ExternalColumns[Favourite_Song_ID]"
+                      dataType="i4"
+                      name="Favourite_Song_ID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Populating User Table\User(SpotifyDW).Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Populating User Table\User(SpotifyDW).Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating User Table\User(SpotifyDW).Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Populating User Table\User(SpotifyDW).Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Populating User Table\User(SpotifyDW).Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Populating User Table\User(SpotifyDW).Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Populating User Table.Paths[Lookup Match Output]"
+              endId="Package\Populating User Table\User(SpotifyDW).Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Populating User Table\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Populating User Table.Paths[Merge Join Output]"
+              endId="Package\Populating User Table\Lookup.Inputs[Lookup Input]"
+              name="Merge Join Output"
+              startId="Package\Populating User Table\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Populating User Table.Paths[OLE DB Source Output]"
+              endId="Package\Populating User Table\Sort by SongID.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Populating User Table\User(SpotifyDB).Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Populating User Table.Paths[OLE DB Source Output1]"
+              endId="Package\Populating User Table\Sort by SongID 1.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Populating User Table\Song(SpotifyDB).Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Populating User Table.Paths[Sort Output]"
+              endId="Package\Populating User Table\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Populating User Table\Sort by SongID.Outputs[Sort Output]" />
+            <path
+              refId="Package\Populating User Table.Paths[Sort Output1]"
+              endId="Package\Populating User Table\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Populating User Table\Sort by SongID 1.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -10839,6 +12580,14 @@ where [refTable].[S_ID] = ?</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\Populating Song Table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{782C2C35-6907-4F94-A9ED-2A8CD69725B9}"
+      DTS:From="Package\Populating Song Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Populating User Table" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -10851,7 +12600,7 @@ where [refTable].[S_ID] = ?</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="212,42"
           Id="Package\Populating MusicLabel Table"
@@ -10874,6 +12623,32 @@ where [refTable].[S_ID] = ?</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Populating User Table"
+          TopLeft="348,266" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="442.5,201">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65"
+              Start="0,0"
+              End="0,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12175,6 +13950,262 @@ where [refTable].[S_ID] = ?</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Populating Song Table\Insert Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Populating User Table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Populating User Table\User(SpotifyDB)"
+          TopLeft="122,87" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Populating User Table\Song(SpotifyDB)"
+          TopLeft="361,83" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Populating User Table\Sort by SongID"
+          TopLeft="123,180" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Populating User Table\Sort by SongID 1"
+          TopLeft="364,181" />
+        <EdgeLayout
+          Id="Package\Populating User Table.Paths[OLE DB Source Output]"
+          TopLeft="198.75,129">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Populating User Table.Paths[OLE DB Source Output1]"
+          TopLeft="438.75,125">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56"
+              Start="0,0"
+              End="0,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Populating User Table\Merge Join"
+          TopLeft="257,305" />
+        <EdgeLayout
+          Id="Package\Populating User Table.Paths[Sort Output]"
+          TopLeft="198.5,222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="123.5,83"
+              Start="0,0"
+              End="123.5,75.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.5"
+                    Point2="0,41.5"
+                    Point3="4,41.5" />
+                  <mssgle:LineSegment
+                    End="119.5,41.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="119.5,41.5"
+                    Point2="123.5,41.5"
+                    Point3="123.5,45.5" />
+                  <mssgle:LineSegment
+                    End="123.5,75.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Populating User Table.Paths[Sort Output1]"
+          TopLeft="439.5,223">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-97.1666666666667,82"
+              Start="0,0"
+              End="-97.1666666666667,74.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.6018237082067" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44.6018237082067"
+                    Point2="0,48.6018237082067"
+                    Point3="-4,48.6018237082067" />
+                  <mssgle:LineSegment
+                    End="-93.1666666666667,48.6018237082067" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-93.1666666666667,48.6018237082067"
+                    Point2="-97.1666666666667,48.6018237082067"
+                    Point3="-97.1666666666667,52.6018237082067" />
+                  <mssgle:LineSegment
+                    End="-97.1666666666667,74.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Populating User Table\Lookup"
+          TopLeft="261,404" />
+        <EdgeLayout
+          Id="Package\Populating User Table.Paths[Merge Join Output]"
+          TopLeft="319.75,347">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57"
+              Start="0,0"
+              End="0,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Populating User Table\User(SpotifyDW)"
+          TopLeft="231,510" />
+        <EdgeLayout
+          Id="Package\Populating User Table.Paths[Lookup Match Output]"
+          TopLeft="317,446">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64"
+              Start="0,0"
+              End="0,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,22.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Populating User Table\User(SpotifyDB)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Populating User Table\Song(SpotifyDB)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Populating User Table\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Song]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Populating User Table\User(SpotifyDW)">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
