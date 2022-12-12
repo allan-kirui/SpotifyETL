@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="130"
-  DTS:VersionGUID="{C0628681-C049-497B-A9FD-E7114FD37854}">
+  DTS:VersionBuild="131"
+  DTS:VersionGUID="{0327EDCA-FE76-4658-AB08-748763558636}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -4863,7 +4863,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       refId="Package\Populating Song Table\Conversion of int to str.Inputs[Input 0].Columns[rankCategoryCsvInt]"
                       cachedDataType="ui4"
                       cachedName="rankCategoryCsvInt"
-                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[rankCategoryCsvInt]" />
+                      lineageId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output].Columns[rankCategoryCsvInt]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -5027,7 +5027,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                     <outputColumn
                       refId="Package\Populating Song Table\Derived Column.Outputs[Derived Column Output].Columns[Current_Flag]"
                       dataType="bool"
-                      description="Current_Flag"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
                       lineageId="Package\Populating Song Table\Derived Column.Outputs[Derived Column Output].Columns[Current_Flag]"
@@ -5076,159 +5075,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
               </outputs>
             </component>
             <component
-              refId="Package\Populating Song Table\Derived Column 1"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Derived Column 1"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Populating Song Table\Derived Column 1.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Populating Song Table\Derived Column 1.Inputs[Derived Column Input].Columns[PublicationDate]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="PublicationDate"
-                      lineageId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[PublicationDate]" />
-                    <inputColumn
-                      refId="Package\Populating Song Table\Derived Column 1.Inputs[Derived Column Input].Columns[rankCategorycsv]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="rankCategorycsv"
-                      lineageId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[rankCategorycsv]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Populating Song Table\Derived Column 1.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateDay]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateDay]"
-                      name="PublicationDateDay"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[DATEPART]("Dd",(DT_DBDATE)#{Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[PublicationDate]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">DATEPART("Dd",(DT_DBDATE)PublicationDate)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateYear]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateYear]"
-                      name="PublicationDateYear"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[DATEPART]("yyyy",(DT_DBDATE)#{Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[PublicationDate]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">DATEPART("yyyy",(DT_DBDATE)PublicationDate)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateMonth]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateMonth]"
-                      name="PublicationDateMonth"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[DATEPART]("Mm",(DT_DBDATE)#{Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[PublicationDate]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">DATEPART("Mm",(DT_DBDATE)PublicationDate)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[rankCategoryCsvInt]"
-                      dataType="ui4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[rankCategoryCsvInt]"
-                      name="rankCategoryCsvInt"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">((DT_UI4)#{Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[rankCategorycsv]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">((DT_UI4)rankCategorycsv)</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Populating Song Table\Derived Column 1.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\Populating Song Table\Derived Column 2"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -5254,7 +5100,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                     <outputColumn
                       refId="Package\Populating Song Table\Derived Column 2.Outputs[Derived Column Output].Columns[Current_Flag]"
                       dataType="bool"
-                      description="Current_Flag"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
                       lineageId="Package\Populating Song Table\Derived Column 2.Outputs[Derived Column Output].Columns[Current_Flag]"
@@ -5295,6 +5140,159 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       refId="Package\Populating Song Table\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Populating Song Table\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Populating Song Table\Extracing Dates and type casting ranks"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Extracing Dates and type casting ranks"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Populating Song Table\Extracing Dates and type casting ranks.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Extracing Dates and type casting ranks.Inputs[Derived Column Input].Columns[PublicationDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="PublicationDate"
+                      lineageId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[PublicationDate]" />
+                    <inputColumn
+                      refId="Package\Populating Song Table\Extracing Dates and type casting ranks.Inputs[Derived Column Input].Columns[rankCategorycsv]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="rankCategorycsv"
+                      lineageId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[rankCategorycsv]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Populating Song Table\Extracing Dates and type casting ranks.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output].Columns[PublicationDateDay]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output].Columns[PublicationDateDay]"
+                      name="PublicationDateDay"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DATEPART]("Dd",(DT_DBDATE)#{Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[PublicationDate]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DATEPART("Dd",(DT_DBDATE)PublicationDate)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output].Columns[PublicationDateYear]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output].Columns[PublicationDateYear]"
+                      name="PublicationDateYear"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DATEPART]("yyyy",(DT_DBDATE)#{Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[PublicationDate]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DATEPART("yyyy",(DT_DBDATE)PublicationDate)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output].Columns[PublicationDateMonth]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output].Columns[PublicationDateMonth]"
+                      name="PublicationDateMonth"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DATEPART]("Mm",(DT_DBDATE)#{Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[PublicationDate]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DATEPART("Mm",(DT_DBDATE)PublicationDate)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output].Columns[rankCategoryCsvInt]"
+                      dataType="ui4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output].Columns[rankCategoryCsvInt]"
+                      name="rankCategoryCsvInt"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">((DT_UI4)#{Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[rankCategorycsv]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">((DT_UI4)rankCategorycsv)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Populating Song Table\Extracing Dates and type casting ranks.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -5806,182 +5804,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       refId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Populating Song Table\Label(SpotifyDB).Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Populating Song Table\Lookup"
-              componentClassID="Microsoft.Lookup"
-              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
-              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup"
-              usesDispositions="true"
-              version="6">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the SQL statement that generates the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[Song]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[Song]) [refTable]
-where [refTable].[S_ID] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the type of connection used to access the reference dataset."
-                  name="ConnectionType"
-                  typeConverter="LookupConnectionType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the cache type of the lookup table."
-                  name="CacheType"
-                  typeConverter="CacheType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
-                  name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">1</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
-                  name="NoMatchCachePercentage">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
-                  name="MaxMemoryUsage">25</property>
-                <property
-                  dataType="System.Int64"
-                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
-                  name="MaxMemoryUsage64">25</property>
-                <property
-                  dataType="System.String"
-                  description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Song_ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="S_ID" dataType="DT_STR" length="11" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="LabelID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Song_Name" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="ID_Publication_Date" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Artist" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Writer" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Producer" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Genre" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Streams" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Rank_Category" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Current_Flag" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                <property
-                  containsID="true"
-                  dataType="System.String"
-                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[S_ID]};</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1250</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
-                  name="TreatDuplicateKeysAsError">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Populating Song Table\Lookup.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.SpotifyDW]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.SpotifyDW]"
-                  description="Connection manager used to access lookup data."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Populating Song Table\Lookup.Inputs[Lookup Input]"
-                  name="Lookup Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Populating Song Table\Lookup.Inputs[Lookup Input].Columns[S_ID]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="11"
-                      cachedName="S_ID"
-                      cachedSortKeyPosition="1"
-                      lineageId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[S_ID]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">S_ID</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Populating Song Table\Lookup.Outputs[Lookup Match Output]"
-                  errorOrTruncationOperation="Lookup"
-                  exclusionGroup="1"
-                  name="Lookup Match Output"
-                  synchronousInputId="Package\Populating Song Table\Lookup.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Populating Song Table\Lookup.Outputs[Lookup Match Output].Columns[current]"
-                      dataType="bool"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Populating Song Table\Lookup.Outputs[Lookup Match Output].Columns[current]"
-                      name="current"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">Current_Flag</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Populating Song Table\Lookup.Outputs[Lookup Match Output].Columns[Rank_Category]"
-                      codePage="1250"
-                      dataType="str"
-                      errorOrTruncationOperation="Copy Column"
-                      length="100"
-                      lineageId="Package\Populating Song Table\Lookup.Outputs[Lookup Match Output].Columns[Rank_Category]"
-                      name="Rank_Category"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">Rank_Category</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Populating Song Table\Lookup.Outputs[Lookup No Match Output]"
-                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
-                  exclusionGroup="1"
-                  name="Lookup No Match Output"
-                  synchronousInputId="Package\Populating Song Table\Lookup.Inputs[Lookup Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Populating Song Table\Lookup.Outputs[Lookup Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Lookup Error Output"
-                  synchronousInputId="Package\Populating Song Table\Lookup.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Populating Song Table\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Populating Song Table\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Populating Song Table\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Populating Song Table\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -7774,7 +7596,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                       refId="Package\Populating Song Table\Month conversion from int to str.Inputs[Input 0].Columns[PublicationDateMonth]"
                       cachedDataType="i4"
                       cachedName="PublicationDateMonth"
-                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateMonth]" />
+                      lineageId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output].Columns[PublicationDateMonth]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -8327,7 +8149,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateDay]};#{Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateYear]};#{Package\Populating Song Table\Month conversion from int to str.Outputs[Output 0].Columns[PublicationDateMonthStr]};</property>
+                  name="ParameterMap">#{Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output].Columns[PublicationDateDay]};#{Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output].Columns[PublicationDateYear]};#{Package\Populating Song Table\Month conversion from int to str.Outputs[Output 0].Columns[PublicationDateMonthStr]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -8354,7 +8176,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
                       refId="Package\Populating Song Table\Retrieving PublicationDate ID.Inputs[Lookup Input].Columns[PublicationDateYear]"
                       cachedDataType="i4"
                       cachedName="PublicationDateYear"
-                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateYear]">
+                      lineageId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output].Columns[PublicationDateYear]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -8388,7 +8210,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
                       refId="Package\Populating Song Table\Retrieving PublicationDate ID.Inputs[Lookup Input].Columns[PublicationDateDay]"
                       cachedDataType="i4"
                       cachedName="PublicationDateDay"
-                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateDay]">
+                      lineageId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output].Columns[PublicationDateDay]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -8558,7 +8380,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
                       cachedDataType="bool"
                       cachedName="current"
                       externalMetadataColumnId="Package\Populating Song Table\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Current_Flag]"
-                      lineageId="Package\Populating Song Table\Lookup.Outputs[Lookup Match Output].Columns[current]">
+                      lineageId="Package\Populating Song Table\Splitting old and new values.Outputs[Lookup Match Output].Columns[current]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -10011,6 +9833,182 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
               </outputs>
             </component>
             <component
+              refId="Package\Populating Song Table\Splitting old and new values"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Splitting old and new values"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[Song]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[Song]) [refTable]
+where [refTable].[S_ID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Song_ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="S_ID" dataType="DT_STR" length="11" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="LabelID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Song_Name" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="ID_Publication_Date" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Artist" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Writer" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Producer" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Genre" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Streams" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Rank_Category" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1250"/&gt;&lt;referenceColumn name="Current_Flag" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[S_ID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Populating Song Table\Splitting old and new values.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.SpotifyDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.SpotifyDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Populating Song Table\Splitting old and new values.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Populating Song Table\Splitting old and new values.Inputs[Lookup Input].Columns[S_ID]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="11"
+                      cachedName="S_ID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output].Columns[S_ID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">S_ID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Populating Song Table\Splitting old and new values.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Populating Song Table\Splitting old and new values.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Splitting old and new values.Outputs[Lookup Match Output].Columns[current]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Populating Song Table\Splitting old and new values.Outputs[Lookup Match Output].Columns[current]"
+                      name="current"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Current_Flag</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Splitting old and new values.Outputs[Lookup Match Output].Columns[Rank_Category]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="100"
+                      lineageId="Package\Populating Song Table\Splitting old and new values.Outputs[Lookup Match Output].Columns[Rank_Category]"
+                      name="Rank_Category"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Rank_Category</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Populating Song Table\Splitting old and new values.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Populating Song Table\Splitting old and new values.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Populating Song Table\Splitting old and new values.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Populating Song Table\Splitting old and new values.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Populating Song Table\Splitting old and new values.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Splitting old and new values.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Populating Song Table\Splitting old and new values.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Populating Song Table\Splitting old and new values.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Populating Song Table\Union All"
               componentClassID="Microsoft.UnionAll"
               contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -10171,7 +10169,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
                       refId="Package\Populating Song Table\Union All.Inputs[Union All Input 1].Columns[PublicationDateDay]"
                       cachedDataType="i4"
                       cachedName="PublicationDateDay"
-                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateDay]">
+                      lineageId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output].Columns[PublicationDateDay]">
                       <properties>
                         <property
                           containsID="true"
@@ -10184,7 +10182,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
                       refId="Package\Populating Song Table\Union All.Inputs[Union All Input 1].Columns[PublicationDateYear]"
                       cachedDataType="i4"
                       cachedName="PublicationDateYear"
-                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateYear]">
+                      lineageId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output].Columns[PublicationDateYear]">
                       <properties>
                         <property
                           containsID="true"
@@ -10197,7 +10195,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
                       refId="Package\Populating Song Table\Union All.Inputs[Union All Input 1].Columns[PublicationDateMonth]"
                       cachedDataType="i4"
                       cachedName="PublicationDateMonth"
-                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateMonth]">
+                      lineageId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output].Columns[PublicationDateMonth]">
                       <properties>
                         <property
                           containsID="true"
@@ -10210,7 +10208,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
                       refId="Package\Populating Song Table\Union All.Inputs[Union All Input 1].Columns[rankCategoryCsvInt]"
                       cachedDataType="ui4"
                       cachedName="rankCategoryCsvInt"
-                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[rankCategoryCsvInt]">
+                      lineageId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output].Columns[rankCategoryCsvInt]">
                       <properties>
                         <property
                           containsID="true"
@@ -10281,7 +10279,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
                       refId="Package\Populating Song Table\Union All.Inputs[Union All Input 1].Columns[current]"
                       cachedDataType="bool"
                       cachedName="current"
-                      lineageId="Package\Populating Song Table\Lookup.Outputs[Lookup Match Output].Columns[current]">
+                      lineageId="Package\Populating Song Table\Splitting old and new values.Outputs[Lookup Match Output].Columns[current]">
                       <properties>
                         <property
                           containsID="true"
@@ -10447,7 +10445,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
                       refId="Package\Populating Song Table\Union All.Inputs[Union All Input 2].Columns[PublicationDateDay]"
                       cachedDataType="i4"
                       cachedName="PublicationDateDay"
-                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateDay]">
+                      lineageId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output].Columns[PublicationDateDay]">
                       <properties>
                         <property
                           containsID="true"
@@ -10460,7 +10458,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
                       refId="Package\Populating Song Table\Union All.Inputs[Union All Input 2].Columns[PublicationDateYear]"
                       cachedDataType="i4"
                       cachedName="PublicationDateYear"
-                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateYear]">
+                      lineageId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output].Columns[PublicationDateYear]">
                       <properties>
                         <property
                           containsID="true"
@@ -10473,7 +10471,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
                       refId="Package\Populating Song Table\Union All.Inputs[Union All Input 2].Columns[PublicationDateMonth]"
                       cachedDataType="i4"
                       cachedName="PublicationDateMonth"
-                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[PublicationDateMonth]">
+                      lineageId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output].Columns[PublicationDateMonth]">
                       <properties>
                         <property
                           containsID="true"
@@ -10486,7 +10484,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
                       refId="Package\Populating Song Table\Union All.Inputs[Union All Input 2].Columns[rankCategoryCsvInt]"
                       cachedDataType="ui4"
                       cachedName="rankCategoryCsvInt"
-                      lineageId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output].Columns[rankCategoryCsvInt]">
+                      lineageId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output].Columns[rankCategoryCsvInt]">
                       <properties>
                         <property
                           containsID="true"
@@ -10557,7 +10555,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
                       refId="Package\Populating Song Table\Union All.Inputs[Union All Input 2].Columns[current]"
                       cachedDataType="bool"
                       cachedName="current"
-                      lineageId="Package\Populating Song Table\Lookup.Outputs[Lookup Match Output].Columns[current]">
+                      lineageId="Package\Populating Song Table\Splitting old and new values.Outputs[Lookup Match Output].Columns[current]">
                       <properties>
                         <property
                           containsID="true"
@@ -10718,7 +10716,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
               refId="Package\Populating Song Table.Paths[Derived Column Output1]"
               endId="Package\Populating Song Table\Month conversion from int to str.Inputs[Input 0]"
               name="Derived Column Output"
-              startId="Package\Populating Song Table\Derived Column 1.Outputs[Derived Column Output]" />
+              startId="Package\Populating Song Table\Extracing Dates and type casting ranks.Outputs[Derived Column Output]" />
             <path
               refId="Package\Populating Song Table.Paths[Derived Column Output3]"
               endId="Package\Populating Song Table\Insert Destination.Inputs[OLE DB Destination Input]"
@@ -10743,7 +10741,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
               refId="Package\Populating Song Table.Paths[Lookup Match Output2]"
               endId="Package\Populating Song Table\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
               name="Lookup Match Output"
-              startId="Package\Populating Song Table\Lookup.Outputs[Lookup Match Output]" />
+              startId="Package\Populating Song Table\Splitting old and new values.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Populating Song Table.Paths[Lookup Match Output1]"
               endId="Package\Populating Song Table\Sort by S_ID.Inputs[Sort Input]"
@@ -10758,10 +10756,10 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
               refId="Package\Populating Song Table.Paths[Lookup No Match Output]"
               endId="Package\Populating Song Table\Adding isCurrent Flag.Inputs[Derived Column Input]"
               name="Lookup No Match Output"
-              startId="Package\Populating Song Table\Lookup.Outputs[Lookup No Match Output]" />
+              startId="Package\Populating Song Table\Splitting old and new values.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\Populating Song Table.Paths[Merge Join Output1]"
-              endId="Package\Populating Song Table\Derived Column 1.Inputs[Derived Column Input]"
+              endId="Package\Populating Song Table\Extracing Dates and type casting ranks.Inputs[Derived Column Input]"
               name="Merge Join Output"
               startId="Package\Populating Song Table\Merge Join.Outputs[Merge Join Output]" />
             <path
@@ -10796,7 +10794,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
               startId="Package\Populating Song Table\Month conversion from int to str.Outputs[Output 0]" />
             <path
               refId="Package\Populating Song Table.Paths[Output 01]"
-              endId="Package\Populating Song Table\Lookup.Inputs[Lookup Input]"
+              endId="Package\Populating Song Table\Splitting old and new values.Inputs[Lookup Input]"
               name="Output 0"
               startId="Package\Populating Song Table\Conversion of int to str.Outputs[Output 0]" />
             <path
@@ -11238,11 +11236,11 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
         <NodeLayout
           Size="161,42"
           Id="Package\Populating Song Table\Sort by LabelID 1"
-          TopLeft="154.5,107.5" />
+          TopLeft="444.5,112.5" />
         <NodeLayout
           Size="152,42"
           Id="Package\Populating Song Table\Sort by LabelID"
-          TopLeft="376,107.5" />
+          TopLeft="700,111.5" />
         <NodeLayout
           Size="171,42"
           Id="Package\Populating Song Table\OLE DB Destination"
@@ -11250,7 +11248,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
         <NodeLayout
           Size="158,42"
           Id="Package\Populating Song Table\Label(SpotifyDB)"
-          TopLeft="156,5.5" />
+          TopLeft="446,10.5" />
         <NodeLayout
           Size="259,42"
           Id="Package\Populating Song Table\Removing duplicates and sort by S_ID"
@@ -11258,11 +11256,11 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
         <NodeLayout
           Size="139,42"
           Id="Package\Populating Song Table\Sort by S_ID"
-          TopLeft="382.5,413.5" />
+          TopLeft="570.5,415.5" />
         <NodeLayout
           Size="122,42"
           Id="Package\Populating Song Table\Lookup 1"
-          TopLeft="391,311.5" />
+          TopLeft="579,313.5" />
         <NodeLayout
           Size="151,42"
           Id="Package\Populating Song Table\Songs CSV"
@@ -11278,11 +11276,11 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
         <NodeLayout
           Size="150,42"
           Id="Package\Populating Song Table\Song (SpotifyDB)"
-          TopLeft="377,5.5" />
+          TopLeft="701,9.5" />
         <NodeLayout
           Size="139,42"
           Id="Package\Populating Song Table\Merge Join 1"
-          TopLeft="382.5,209.5" />
+          TopLeft="570.5,211.5" />
         <NodeLayout
           Size="180,42"
           Id="Package\Populating Song Table\Adding isCurrent Flag"
@@ -11367,30 +11365,30 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[Sort Output3]"
-          TopLeft="452,455.5">
+          TopLeft="640,457.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="20.3333333333333,60"
+              EndConnector="-167.666666666667,58"
               Start="0,0"
-              End="20.3333333333333,52.5">
+              End="-167.666666666667,50.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5623100303951" />
+                    End="0,30.3768996960486" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.5623100303951"
-                    Point2="0,35.5623100303951"
-                    Point3="4,35.5623100303951" />
+                    Point1="0,30.3768996960486"
+                    Point2="0,34.3768996960486"
+                    Point3="-4,34.3768996960486" />
                   <mssgle:LineSegment
-                    End="16.3333333333333,35.5623100303951" />
+                    End="-163.666666666667,34.3768996960486" />
                   <mssgle:CubicBezierSegment
-                    Point1="16.3333333333333,35.5623100303951"
-                    Point2="20.3333333333333,35.5623100303951"
-                    Point3="20.3333333333333,39.5623100303951" />
+                    Point1="-163.666666666667,34.3768996960486"
+                    Point2="-167.666666666667,34.3768996960486"
+                    Point3="-167.666666666667,38.3768996960486" />
                   <mssgle:LineSegment
-                    End="20.3333333333333,52.5" />
+                    End="-167.666666666667,50.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11435,30 +11433,30 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[Sort Output1]"
-          TopLeft="452,149.5">
+          TopLeft="776,153.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="21.8333333333333,60"
+              EndConnector="-114.166666666667,58"
               Start="0,0"
-              End="21.8333333333333,52.5">
+              End="-114.166666666667,50.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5903271692745" />
+                    End="0,30.4039829302987" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.5903271692745"
-                    Point2="0,35.5903271692745"
-                    Point3="4,35.5903271692745" />
+                    Point1="0,30.4039829302987"
+                    Point2="0,34.4039829302987"
+                    Point3="-4,34.4039829302987" />
                   <mssgle:LineSegment
-                    End="17.8333333333333,35.5903271692745" />
+                    End="-110.166666666667,34.4039829302987" />
                   <mssgle:CubicBezierSegment
-                    Point1="17.8333333333333,35.5903271692745"
-                    Point2="21.8333333333333,35.5903271692745"
-                    Point3="21.8333333333333,39.5903271692745" />
+                    Point1="-110.166666666667,34.4039829302987"
+                    Point2="-114.166666666667,34.4039829302987"
+                    Point3="-114.166666666667,38.4039829302987" />
                   <mssgle:LineSegment
-                    End="21.8333333333333,52.5" />
+                    End="-114.166666666667,50.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11469,30 +11467,30 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[Sort Output]"
-          TopLeft="235,149.5">
+          TopLeft="525,154.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="195.166666666667,60"
+              EndConnector="93.1666666666666,57"
               Start="0,0"
-              End="195.166666666667,52.5">
+              End="93.1666666666666,49.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5903271692745" />
+                    End="0,29.8108108108108" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.5903271692745"
-                    Point2="0,35.5903271692745"
-                    Point3="4,35.5903271692745" />
+                    Point1="0,29.8108108108108"
+                    Point2="0,33.8108108108108"
+                    Point3="4,33.8108108108108" />
                   <mssgle:LineSegment
-                    End="191.166666666667,35.5903271692745" />
+                    End="89.1666666666666,33.8108108108108" />
                   <mssgle:CubicBezierSegment
-                    Point1="191.166666666667,35.5903271692745"
-                    Point2="195.166666666667,35.5903271692745"
-                    Point3="195.166666666667,39.5903271692745" />
+                    Point1="89.1666666666666,33.8108108108108"
+                    Point2="93.1666666666666,33.8108108108108"
+                    Point3="93.1666666666666,37.8108108108108" />
                   <mssgle:LineSegment
-                    End="195.166666666667,52.5" />
+                    End="93.1666666666666,49.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11503,7 +11501,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[OLE DB Source Output1]"
-          TopLeft="452,47.5">
+          TopLeft="776,51.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11525,7 +11523,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[OLE DB Source Output]"
-          TopLeft="235,47.5">
+          TopLeft="525,52.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11547,7 +11545,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[Merge Join Output]"
-          TopLeft="452,251.5">
+          TopLeft="640,253.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11568,12 +11566,12 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="163,42"
-          Id="Package\Populating Song Table\Derived Column 1"
-          TopLeft="370.5,617.5" />
+          Size="184,42"
+          Id="Package\Populating Song Table\Extracing Dates and type casting ranks"
+          TopLeft="358.5,617.5" />
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[Merge Join Output1]"
-          TopLeft="452,557.5">
+          TopLeft="451.25,557.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11599,7 +11597,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
           TopLeft="336.5,719.5" />
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[Derived Column Output1]"
-          TopLeft="452,659.5">
+          TopLeft="451.25,659.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11646,42 +11644,42 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="113,42"
-          Id="Package\Populating Song Table\Lookup"
-          TopLeft="395.5,1025.5" />
+          Size="161,42"
+          Id="Package\Populating Song Table\Splitting old and new values"
+          TopLeft="376.5,1025.5" />
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[Lookup No Match Output]"
-          TopLeft="434.5,1067.5">
+          TopLeft="431.5,1067.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-237.5,60"
+              EndConnector="-234.5,60"
               Start="0,0"
-              End="-237.5,52.5">
+              End="-234.5,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.5026178010471" />
+                    End="0,20.3542435424354" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.5026178010471"
-                    Point2="0,24.5026178010471"
-                    Point3="-4,24.5026178010471" />
+                    Point1="0,20.3542435424354"
+                    Point2="0,24.3542435424354"
+                    Point3="-4,24.3542435424354" />
                   <mssgle:LineSegment
-                    End="-233.5,24.5026178010471" />
+                    End="-230.5,24.3542435424354" />
                   <mssgle:CubicBezierSegment
-                    Point1="-233.5,24.5026178010471"
-                    Point2="-237.5,24.5026178010471"
-                    Point3="-237.5,28.5026178010471" />
+                    Point1="-230.5,24.3542435424354"
+                    Point2="-234.5,24.3542435424354"
+                    Point3="-234.5,28.3542435424354" />
                   <mssgle:LineSegment
-                    End="-237.5,52.5" />
+                    End="-234.5,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-174.55638671875,29.5026178010471,111.6127734375,11.609375"
+              BoundingBox="-173.05638671875,29.3542435424354,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -11715,7 +11713,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[Output 01]"
-          TopLeft="452,965.5">
+          TopLeft="454.5,965.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11737,7 +11735,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[Lookup Match Output1]"
-          TopLeft="452,353.5">
+          TopLeft="640,355.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11762,50 +11760,50 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
         <NodeLayout
           Size="209,42"
           Id="Package\Populating Song Table\Slowly Changing Dimension"
-          TopLeft="347.5,1127.5" />
+          TopLeft="668.5,1116.5" />
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[Lookup Match Output2]"
-          TopLeft="469.5,1067.5">
+          TopLeft="482.5,1067.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-17.5,60"
+              EndConnector="290.5,49"
               Start="0,0"
-              End="-17.5,52.5">
+              End="290.5,41.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.5026178010471" />
+                    End="0,15.8892988929889" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.5026178010471"
-                    Point2="0,24.5026178010471"
-                    Point3="-4,24.5026178010471" />
+                    Point1="0,15.8892988929889"
+                    Point2="0,19.8892988929889"
+                    Point3="4,19.8892988929889" />
                   <mssgle:LineSegment
-                    End="-13.5,24.5026178010471" />
+                    End="286.5,19.8892988929889" />
                   <mssgle:CubicBezierSegment
-                    Point1="-13.5,24.5026178010471"
-                    Point2="-17.5,24.5026178010471"
-                    Point3="-17.5,28.5026178010471" />
+                    Point1="286.5,19.8892988929889"
+                    Point2="290.5,19.8892988929889"
+                    Point3="290.5,23.8892988929889" />
                   <mssgle:LineSegment
-                    End="-17.5,52.5" />
+                    End="290.5,41.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-56.94138671875,29.5026178010471,96.3827734375,11.609375"
+              BoundingBox="97.05861328125,24.8892988929889,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
           Size="154,42"
           Id="Package\Populating Song Table\Derived Column"
-          TopLeft="237,1229.5" />
+          TopLeft="558,1218.5" />
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[Historical Attribute Inserts Output]"
-          TopLeft="418.5,1169.5">
+          TopLeft="739.5,1158.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11816,17 +11814,17 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.2735042735043" />
+                    End="0,20.2735042735044" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.2735042735043"
-                    Point2="0,24.2735042735043"
-                    Point3="-4,24.2735042735043" />
+                    Point1="0,20.2735042735044"
+                    Point2="0,24.2735042735044"
+                    Point3="-4,24.2735042735044" />
                   <mssgle:LineSegment
-                    End="-100.5,24.2735042735043" />
+                    End="-100.5,24.2735042735044" />
                   <mssgle:CubicBezierSegment
-                    Point1="-100.5,24.2735042735043"
-                    Point2="-104.5,24.2735042735043"
-                    Point3="-104.5,28.2735042735043" />
+                    Point1="-100.5,24.2735042735044"
+                    Point2="-104.5,24.2735042735044"
+                    Point3="-104.5,28.2735042735044" />
                   <mssgle:LineSegment
                     End="-104.5,52.5" />
                 </mssgle:SegmentCollection>
@@ -11835,17 +11833,17 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-127.30638671875,29.2735042735043,150.1127734375,11.609375"
+              BoundingBox="-127.30638671875,29.2735042735044,150.1127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
           Size="166,42"
           Id="Package\Populating Song Table\OLE DB Command"
-          TopLeft="225,1331.5" />
+          TopLeft="546,1320.5" />
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[Derived Column Output2]"
-          TopLeft="311,1271.5">
+          TopLeft="632,1260.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11868,10 +11866,10 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
         <NodeLayout
           Size="121,42"
           Id="Package\Populating Song Table\Union All"
-          TopLeft="391.5,1433.5" />
+          TopLeft="712.5,1422.5" />
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[New Output]"
-          TopLeft="485.5,1169.5">
+          TopLeft="806.5,1158.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11901,13 +11899,13 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-34.4247200520833,136.104705383637,54.1827734375,11.43359375"
+              BoundingBox="-34.4247200520834,136.104705383637,54.1827734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[OLE DB Command Output]"
-          TopLeft="308,1373.5">
+          TopLeft="629,1362.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11918,17 +11916,17 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5301794453507" />
+                    End="0,31.5301794453508" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.5301794453507"
-                    Point2="0,35.5301794453507"
-                    Point3="4,35.5301794453507" />
+                    Point1="0,31.5301794453508"
+                    Point2="0,35.5301794453508"
+                    Point3="4,35.5301794453508" />
                   <mssgle:LineSegment
-                    End="121.166666666667,35.5301794453507" />
+                    End="121.166666666667,35.5301794453508" />
                   <mssgle:CubicBezierSegment
-                    Point1="121.166666666667,35.5301794453507"
-                    Point2="125.166666666667,35.5301794453507"
-                    Point3="125.166666666667,39.5301794453507" />
+                    Point1="121.166666666667,35.5301794453508"
+                    Point2="125.166666666667,35.5301794453508"
+                    Point3="125.166666666667,39.5301794453508" />
                   <mssgle:LineSegment
                     End="125.166666666667,52.5" />
                 </mssgle:SegmentCollection>
@@ -11942,10 +11940,10 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
         <NodeLayout
           Size="163,42"
           Id="Package\Populating Song Table\Derived Column 2"
-          TopLeft="370.5,1535.5" />
+          TopLeft="691.5,1524.5" />
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[Union All Output 1]"
-          TopLeft="452,1475.5">
+          TopLeft="773,1464.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11968,21 +11966,21 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
         <NodeLayout
           Size="163,42"
           Id="Package\Populating Song Table\Insert Destination"
-          TopLeft="370.5,1637.5" />
+          TopLeft="697.5,1630.5" />
         <EdgeLayout
           Id="Package\Populating Song Table.Paths[Derived Column Output3]"
-          TopLeft="452,1577.5">
+          TopLeft="776,1566.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,64"
               Start="0,0"
-              End="0,52.5">
+              End="0,56.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,56.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12080,7 +12078,7 @@ where [refTable].[Days] = ? and [refTable].[Years] = ? and [refTable].[Months] =
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Populating Song Table\Lookup">
+    design-time-name="Package\Populating Song Table\Splitting old and new values">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
